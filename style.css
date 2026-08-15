@@ -1246,3 +1246,322 @@ input {
   transform: scale(0.95);
 }
 
+/* =====================================================
+   OSMIUM REDESIGN LAYER
+   Sharp edges · custom cursor · fluid transitions · polish
+   ===================================================== */
+
+/* --- Global sharp edges: kill every rounded corner --- */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+:root {
+  --panel-radius: 0px;
+  --accent: var(--blue);
+  --hairline: color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Custom cursor --- */
+.custom-cursor-on,
+.custom-cursor-on * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100000;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  transition: opacity 0.2s ease, width 0.15s ease, height 0.15s ease;
+}
+
+.cursor-ring {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--blue);
+  background: transparent;
+  transition: opacity 0.25s ease, width 0.18s cubic-bezier(0.22, 0.61, 0.36, 1),
+    height 0.18s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.cursor-ring.cursor-hover {
+  width: 46px;
+  height: 46px;
+  background: color-mix(in srgb, var(--blue) 10%, transparent);
+  border-color: var(--blue);
+}
+
+.cursor-ring.cursor-down {
+  width: 18px;
+  height: 18px;
+  background: color-mix(in srgb, var(--blue) 22%, transparent);
+}
+
+/* --- Page + embed transitions --- */
+@keyframes osmium-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.994);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+.page {
+  animation: osmium-page-in 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+#embed-container iframe {
+  animation: osmium-page-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Staggered reveal for game / app cards */
+@keyframes osmium-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.game-list .game-btn,
+.apps-list-grid .game-btn {
+  animation: osmium-card-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* --- Main panel: crisp framed surface --- */
+.main-content {
+  border: 1px solid var(--hairline);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.main-content.home-active {
+  border-color: transparent;
+}
+
+/* --- Typography --- */
+.welcome,
+.page h1 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.welcome {
+  font-size: clamp(40px, 6vw, 66px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.page h1 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.logo-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.logo h6 {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+#mainQuote {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+/* --- Navigation --- */
+nav {
+  border-right: 1px solid var(--hairline);
+}
+
+.container:not(.nav-left) nav {
+  border-right: none;
+  border-left: 1px solid var(--hairline);
+}
+
+.tab-btn {
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Accent edge that slides in on hover/active */
+.tab-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--blue);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.container.nav-left .tab-btn::before {
+  left: auto;
+  right: 0;
+}
+
+.tab-btn:hover {
+  background: var(--background3);
+}
+
+.tab-btn:hover::before {
+  transform: scaleY(1);
+}
+
+.bottom-nav {
+  border-top: 1px solid var(--hairline);
+  margin-top: 6px;
+}
+
+.nav-divider {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  opacity: 1;
+}
+
+/* --- Game / App cards --- */
+.game-btn {
+  border: 1px solid var(--hairline);
+  background: var(--background);
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
+}
+
+.game-btn:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue);
+  background: var(--background3);
+  box-shadow: 0 18px 40px -18px var(--shadow);
+}
+
+.game-btn img {
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.game-btn:hover img {
+  transform: scale(1.07);
+}
+
+.game-btn .title {
+  transition: color 0.2s ease;
+}
+
+.game-btn:hover .title {
+  color: var(--blue);
+}
+
+/* --- Inputs --- */
+.game-search-container,
+#uv-form,
+.ai-input,
+.select-control,
+#index-custom-wisp-input {
+  border: 1px solid var(--hairline);
+  background: var(--background);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-search-container:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent);
+}
+
+/* --- Buttons --- */
+.page button,
+#server-switcher-btn {
+  border: 1px solid var(--hairline);
+  background: var(--background);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.15s ease;
+  font-weight: 600;
+}
+
+.page button:hover,
+#server-switcher-btn:hover {
+  background: var(--background3);
+  border-color: var(--blue);
+}
+
+.page button:active {
+  transform: translateY(1px);
+}
+
+.setting-card {
+  border: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--background) 55%, transparent);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.setting-card:hover {
+  border-color: var(--hairline);
+  background: color-mix(in srgb, var(--background3) 40%, transparent);
+}
+
+.setting-card h2 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* --- Shortcuts (proxy) --- */
+.shortcut {
+  border: 1px solid var(--hairline);
+  background: var(--background);
+  padding: 12px;
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.2s ease, background 0.2s ease;
+}
+
+.shortcut:hover {
+  transform: translateY(-3px);
+  border-color: var(--blue);
+  background: var(--background3);
+}
+
+/* Selection color */
+::selection {
+  background: color-mix(in srgb, var(--blue) 35%, transparent);
+  color: var(--text);
+}
+
