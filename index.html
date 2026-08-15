@@ -7,6 +7,9 @@
   <meta property="description" content="A comprehensive educational platform for learning and teaching Mathematics, Science, English, History, Literature, Writing, Reading, Social Studies, and Geography!" />
   <title>Google Classroom</title>
   <link rel="icon" href="/assets/classroom.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="/style.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYPYXGT59Q"></script>
@@ -77,8 +80,8 @@
     <nav>
       <div class="top">
         <a href="#" class="logo" onclick="openPage('home-page'); return false;">
-          <img src="/logo.png" alt="Ellen DeGenerate">
-          <h2 class="logo-name">Ellen DeGenerate</h2>
+          <img src="/logo.png" alt="Osmium">
+          <h2 class="logo-name">Osmium</h2>
           <h6>v56</h6>
         </a>
         <div class="tabs">
@@ -108,7 +111,7 @@
       <div class="page" id="home-page">
         <div class="home-page-container">
           <div class="main-text center-container text-center main-div">
-              <h1 class="welcome" style="margin-bottom: 0;">Ellen DeGenerate</h1>
+              <h1 class="welcome" style="margin-bottom: 0;">Osmium</h1>
               <p id="mainQuote" onclick="animateAndNewQuote()" style="cursor: pointer; opacity: 0.8; margin-top: 5px; margin-bottom: 15px; min-height: 24px;">...</p>
               
               <div class="info-widgets" style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; font-size: 14px; opacity: 0.7;">
@@ -190,7 +193,6 @@
         <h1>Games</h1>
         <div class="input-container">
           <div class="game-search-container"><span><i data-lucide="search"></i></span><input type="text" id="searchInput" placeholder="Search for a game..."></div>
-          <button id="toggle-no-image-games" class="category-btn" type="button">Show New Games</button>
         </div>
         <div class="game-list" id="game-list"></div>
       </div>
@@ -239,7 +241,7 @@
             <h2>Privacy Policy</h2>
             <p><strong>Last Updated:</strong> March 2026</p>
             <p>(tickles.store is owned by us and may be mentioned)</p>
-            <p>Ellen DeGenerate ("we", "our", or "this website") respects your privacy. This page explains what information may be collected when you visit the website and how that information may be used.</p>
+            <p>Osmium ("we", "our", or "this website") respects your privacy. This page explains what information may be collected when you visit the website and how that information may be used.</p>
             <h3>Information We May Collect</h3>
             <p>When you visit the website, certain limited information may be collected automatically through analytics tools. This may include:</p>
             <ul style="margin-left: 20px; list-style-type: disc;">
@@ -252,7 +254,7 @@
             <p>This information may be collected using analytics services such as Google Analytics in order to better understand website usage and improve the user experience.</p>
             <h3>Third-Party Content</h3>
             <p>Many games and applications available on this website are created by third-party developers. These games may collect information independently within the game itself.</p>
-            <p>Ellen DeGenerate does not control or manage the data collection practices of third-party developers and is not responsible for how those developers collect or use any information.</p>
+            <p>Osmium does not control or manage the data collection practices of third-party developers and is not responsible for how those developers collect or use any information.</p>
             <h3>Cookies and Analytics</h3>
             <p>This website may use cookies or similar technologies through third-party services such as analytics providers. These tools help us understand how visitors interact with the website so that we can improve functionality and performance.</p>
             <h3>Copyright Policy</h3>
@@ -267,17 +269,17 @@
               <li>A statement that you believe in good faith that the use is not authorized</li>
               <li>A statement that the information in the notice is accurate</li>
             </ul>
-            <p>DMCA requests can be sent to:<br><br><strong>Email:</strong> contactEllen DeGenerate@duck.com</p>
+            <p>DMCA requests can be sent to:<br><br><strong>Email:</strong> contactOsmium@duck.com</p>
             <h3>Security</h3>
             <p>We take reasonable steps to protect the information collected through the website. However, no internet service can guarantee absolute security and use of the website is at your own risk.</p>
             <h2>Terms of Service</h2>
             <h3>Use of the Website</h3>
-            <p>By accessing or using Ellen DeGenerate, you agree to follow these terms. If you do not agree with these terms, you should stop using the website.</p>
+            <p>By accessing or using Osmium, you agree to follow these terms. If you do not agree with these terms, you should stop using the website.</p>
             <h3>Third-Party Games and Content</h3>
             <p>Many games on this website are created by independent developers and are hosted or embedded from external sources. All rights to those games belong to their respective creators.</p>
-            <p>Ellen DeGenerate does not claim ownership of third-party games unless explicitly stated.</p>
+            <p>Osmium does not claim ownership of third-party games unless explicitly stated.</p>
             <h3>No Liability</h3>
-            <p>Use of this website is entirely at your own risk. Ellen DeGenerate and its owner are not responsible for any consequences that may occur from the use of this website.</p>
+            <p>Use of this website is entirely at your own risk. Osmium and its owner are not responsible for any consequences that may occur from the use of this website.</p>
             <p>This includes but is not limited to:</p>
             <ul style="margin-left: 20px; list-style-type: disc;">
               <li>Violations of school, workplace, or organizational policies</li>
@@ -465,7 +467,7 @@ function normalizeNoImageGameUrl(path) {
 let INLINE_GAMES = [];
 let NO_IMAGE_GAMES = [];
 let DYNAMIC_APPS = [];
-let showingNoImageGames = false;
+let showingNoImageGames = true;
 
 function loadIntegratedGames() {
   const sourceGames = Array.isArray(window.games) && window.games.length
@@ -1107,15 +1109,34 @@ function addEmbedTab(tabId, title, url, options = {}) {
   openPage(`${tabId}-embed`);
 }
 
+function fullscreenEmbedTab(tabId) {
+  // Called from within a user click gesture, so requestFullscreen is allowed.
+  const iframe = document.getElementById(`${tabId}-embed`);
+  if (!iframe) return;
+  const req = iframe.requestFullscreen || iframe.webkitRequestFullscreen || iframe.msRequestFullscreen;
+  if (req) {
+    try {
+      const result = req.call(iframe);
+      if (result && typeof result.catch === 'function') result.catch(() => {});
+    } catch (e) {
+      // ignore fullscreen rejection
+    }
+  }
+}
+
 function addGameTab(gameOrId, gameName, gameUrl) {
   if (typeof gameOrId === 'object' && gameOrId) {
     const serverUrls = (Array.isArray(gameOrId.serverUrls) && gameOrId.serverUrls.length)
       ? gameOrId.serverUrls
       : [gameOrId.url || 'about:blank'];
-    addEmbedTab(`game-${gameOrId.id}`, gameOrId.title, serverUrls[0], { serverUrls, icon: gameOrId.img || DEFAULT_GAME_IMAGE });
+    const tabId = `game-${gameOrId.id}`;
+    addEmbedTab(tabId, gameOrId.title, serverUrls[0], { serverUrls, icon: gameOrId.img || DEFAULT_GAME_IMAGE });
+    fullscreenEmbedTab(tabId);
     return;
   }
-  addEmbedTab(`game-${gameOrId}`, gameName, gameUrl || 'about:blank');
+  const tabId = `game-${gameOrId}`;
+  addEmbedTab(tabId, gameName, gameUrl || 'about:blank');
+  fullscreenEmbedTab(tabId);
 }
 
 function closeTab(id) {
@@ -1575,35 +1596,160 @@ function disableBlobCloak() {
 
 function getParticleColor() {
   const blue = getComputedStyle(document.body).getPropertyValue('--blue');
-  return blue ? blue.trim() : 'rgba(138,173,244,.8)';
+  return blue ? blue.trim() : '#8aadf4';
+}
+
+// Parse any CSS color into {r,g,b} using an offscreen canvas.
+const _colorCache = {};
+function parseColorRGB(color) {
+  if (_colorCache[color]) return _colorCache[color];
+  const c = document.createElement('canvas');
+  c.width = c.height = 1;
+  const cx = c.getContext('2d');
+  cx.fillStyle = '#000';
+  cx.fillStyle = color;
+  cx.fillRect(0, 0, 1, 1);
+  const d = cx.getImageData(0, 0, 1, 1).data;
+  const rgb = { r: d[0], g: d[1], b: d[2] };
+  _colorCache[color] = rgb;
+  return rgb;
+}
+
+const particleMouse = { x: -9999, y: -9999, active: false };
+let _particleMouseBound = false;
+function bindParticleMouse() {
+  if (_particleMouseBound) return;
+  _particleMouseBound = true;
+  window.addEventListener('mousemove', (e) => {
+    particleMouse.x = e.clientX;
+    particleMouse.y = e.clientY;
+    particleMouse.active = true;
+  }, { passive: true });
+  window.addEventListener('mouseout', () => { particleMouse.active = false; });
 }
 
 function drawParticles() {
   const canvas = document.getElementById('particles-js');
   const ctx = canvas.getContext('2d');
-  let w = canvas.width = window.innerWidth;
-  let h = canvas.height = window.innerHeight;
-  let pColor = getParticleColor();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  let w, h;
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
 
   if (particleLoop) cancelAnimationFrame(particleLoop);
-  const points = Array.from({ length: particleCount }, () => ({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-.5)*.5, vy: (Math.random()-.5)*.5 }));
+  bindParticleMouse();
+
+  // Depth (z) drives size, speed and brightness for a layered, 3D feel.
+  const points = Array.from({ length: particleCount }, () => {
+    const z = Math.random();
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * (0.15 + z * 0.35),
+      vy: (Math.random() - 0.5) * (0.15 + z * 0.35),
+      z,
+      r: 0.6 + z * 2.1,
+    };
+  });
+
+  const LINK_DIST = 140;
+  const MOUSE_DIST = 190;
 
   const loop = () => {
     if (!particlesActive) return;
-    pColor = getParticleColor();
-    ctx.clearRect(0,0,w,h);
-    ctx.fillStyle = pColor;
-    ctx.globalAlpha = 0.8;
-    points.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-      ctx.beginPath(); ctx.arc(p.x,p.y,1.3,0,Math.PI*2); ctx.fill();
-    });
+    const rgb = parseColorRGB(getParticleColor());
+    const base = `${rgb.r},${rgb.g},${rgb.b}`;
+    ctx.clearRect(0, 0, w, h);
+
+    // Update positions with gentle cursor attraction/parallax.
+    for (const p of points) {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (particleMouse.active) {
+        const dx = particleMouse.x - p.x;
+        const dy = particleMouse.y - p.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < MOUSE_DIST && dist > 0.01) {
+          const pull = ((MOUSE_DIST - dist) / MOUSE_DIST) * 0.035 * (0.4 + p.z);
+          p.vx += (dx / dist) * pull;
+          p.vy += (dy / dist) * pull;
+        }
+      }
+
+      // Light friction so cursor pulls don't accumulate forever.
+      p.vx *= 0.992;
+      p.vy *= 0.992;
+
+      // Wrap around edges for a seamless field.
+      if (p.x < -20) p.x = w + 20;
+      if (p.x > w + 20) p.x = -20;
+      if (p.y < -20) p.y = h + 20;
+      if (p.y > h + 20) p.y = -20;
+    }
+
+    // Connecting lines between nearby particles.
+    ctx.lineWidth = 1;
+    for (let i = 0; i < points.length; i++) {
+      const a = points[i];
+      for (let j = i + 1; j < points.length; j++) {
+        const b = points[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.abs(dx) + Math.abs(dy);
+        if (dist > LINK_DIST) continue;
+        const real = Math.hypot(dx, dy);
+        if (real > LINK_DIST) continue;
+        const alpha = (1 - real / LINK_DIST) * 0.28 * (0.4 + (a.z + b.z) / 2);
+        ctx.strokeStyle = `rgba(${base},${alpha.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    // Lines to the cursor for an interactive web.
+    if (particleMouse.active) {
+      for (const p of points) {
+        const dx = p.x - particleMouse.x;
+        const dy = p.y - particleMouse.y;
+        const real = Math.hypot(dx, dy);
+        if (real > MOUSE_DIST) continue;
+        const alpha = (1 - real / MOUSE_DIST) * 0.4;
+        ctx.strokeStyle = `rgba(${base},${alpha.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(particleMouse.x, particleMouse.y);
+        ctx.stroke();
+      }
+    }
+
+    // Particles with a soft glow.
+    for (const p of points) {
+      const glow = 0.35 + p.z * 0.55;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${base},${glow.toFixed(3)})`;
+      ctx.shadowColor = `rgba(${base},0.9)`;
+      ctx.shadowBlur = 6 + p.z * 10;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+
     particleLoop = requestAnimationFrame(loop);
   };
 
-  window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+  window.addEventListener('resize', resize);
   loop();
 }
 
@@ -1639,8 +1785,56 @@ function uploadState(file) {
   reader.readAsText(file);
 }
 
+function initCustomCursor() {
+  // Skip on touch / coarse pointers.
+  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  document.body.appendChild(ring);
+  document.body.appendChild(dot);
+  document.body.classList.add('custom-cursor-on');
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
+  let visible = false;
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (!visible) {
+      visible = true;
+      ring.style.opacity = '1';
+      dot.style.opacity = '1';
+    }
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+
+    // Grow the ring over interactive targets.
+    const interactive = e.target.closest('a, button, input, select, textarea, .game-btn, .tab-btn, .shortcut, [onclick], label');
+    ring.classList.toggle('cursor-hover', !!interactive);
+  }, { passive: true });
+
+  window.addEventListener('mousedown', () => ring.classList.add('cursor-down'));
+  window.addEventListener('mouseup', () => ring.classList.remove('cursor-down'));
+  document.addEventListener('mouseleave', () => {
+    visible = false;
+    ring.style.opacity = '0';
+    dot.style.opacity = '0';
+  });
+
+  const tick = () => {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(tick);
+  };
+  tick();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
+  initCustomCursor();
   if (window.location.hash.toLowerCase() === '#privacypolicy') {
     openPage('privacy-page');
   } else {
