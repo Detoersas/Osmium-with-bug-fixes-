@@ -1,13 +1,14 @@
 // =====================================================
 // CONFIGURATION
 // =====================================================
-const DEFAULT_WISP = "wss://wisp.rhw.one/wisp/";
+const DEFAULT_WISP = "wss://anura.pro/";
 const WISP_SERVERS = [
-    { name: "Rhw's Wisp", url: "wss://wisp.rhw.one/wisp/" }, //note that this also works with uv static and sj static
-    { name: "Anura's Wisp", url: "wss://anura.pro/" }
+    { name: "Anura's Wisp", url: "wss://anura.pro/" },
+    { name: "Rhw's Wisp", url: "wss://wisp.rhw.one/wisp/" } //note that this also works with uv static and sj static
 ];
 
-if (!localStorage.getItem("proxServer")) {
+// Always default every visitor to Anura's Wisp unless they've explicitly chosen a server this session.
+if (!sessionStorage.getItem("wispUserChoice")) {
     localStorage.setItem("proxServer", DEFAULT_WISP);
 }
 
@@ -429,6 +430,7 @@ window.deleteCustomWisp = function (urlToDelete) {
     localStorage.setItem('customWisps', JSON.stringify(customWisps));
 
     if (localStorage.getItem('proxServer') === urlToDelete) {
+        sessionStorage.removeItem('wispUserChoice');
         setWisp(DEFAULT_WISP);
     } else {
         renderServerList();
@@ -478,6 +480,7 @@ async function checkServerHealth(url, element) {
 function setWisp(url) {
     const oldUrl = localStorage.getItem('proxServer');
     localStorage.setItem('proxServer', url);
+    sessionStorage.setItem('wispUserChoice', '1');
 
     // Show notification before reload
     if (typeof Notify !== 'undefined' && oldUrl !== url) {

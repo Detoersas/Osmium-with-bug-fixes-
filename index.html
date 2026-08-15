@@ -408,7 +408,7 @@
                 <button id="index-add-wisp">Add</button>
                 <button id="index-reset-wisp">Reset Default</button>
               </div>
-              <p id="index-wisp-status">Current: Rhw's Wisp</p>
+              <p id="index-wisp-status">Current: Anura's Wisp</p>
               </div>
           </div>
         </div>
@@ -1401,11 +1401,16 @@ function updateIndexCloakUI() {
   }
 }
 
-const INDEX_DEFAULT_WISP = 'wss://wisp.rhw.one/wisp/';
+const INDEX_DEFAULT_WISP = 'wss://anura.pro/';
 const INDEX_WISP_SERVERS = [
-  { name: "Rhw's Wisp", url: 'wss://wisp.rhw.one/wisp/' },
-  { name: "Anura's Wisp", url: 'wss://anura.pro/' }
+  { name: "Anura's Wisp", url: 'wss://anura.pro/' },
+  { name: "Rhw's Wisp", url: 'wss://wisp.rhw.one/wisp/' }
 ];
+
+// Always default every visitor to Anura's Wisp unless they've explicitly chosen a server this session.
+if (!sessionStorage.getItem('wispUserChoice')) {
+  localStorage.setItem('proxServer', INDEX_DEFAULT_WISP);
+}
 
 const HOME_SEARCH_TARGET_KEY = 'homeSearchTarget';
 const HOME_SEARCH_TARGETS = {
@@ -1448,6 +1453,7 @@ function getIndexCurrentWisp() {
 
 function setIndexWisp(url) {
   localStorage.setItem('proxServer', url);
+  sessionStorage.setItem('wispUserChoice', '1');
   renderIndexWispSettings();
 }
 
@@ -1456,6 +1462,7 @@ function removeIndexCustomWisp(url) {
   localStorage.setItem('customWisps', JSON.stringify(nextCustom));
   if (getIndexCurrentWisp() === url) {
     localStorage.setItem('proxServer', INDEX_DEFAULT_WISP);
+    sessionStorage.removeItem('wispUserChoice');
   }
   renderIndexWispSettings();
 }
@@ -1913,6 +1920,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (resetWispBtn) {
     resetWispBtn.addEventListener('click', () => {
       localStorage.setItem('proxServer', INDEX_DEFAULT_WISP);
+      sessionStorage.removeItem('wispUserChoice');
       renderIndexWispSettings();
     });
   }
