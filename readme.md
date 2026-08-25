@@ -1,23 +1,8 @@
-read privacy policy and dmca policy [here](https://osmium.spacetechnology.net/#privacypolicy)
-make sure to read the license
-## Welcome to Osmium github repository!
-
-### Osmium is a free website with
- - 1500+ games
- - scramjet proxy
- - byod
-
-#### Join our discord [here!](https://discord.com/invite/BBcHrUYYNv)
-check out my other websites on my github
-
-------------
-todo
- - add more game icons
- - fix proxy cuz some websites ssl is broken?
-
-thanks for reading
-also we are open to contributions ig via pull requests
-this website is fully static
-
-current version 3.11 i think
-if contact is required email me at contactosmium@duck.com
+Creating a website from a GitHub repository is straightforward and requires no formal qualifications.
+Begin by creating or logging into an account at vercel.com.
+Once logged in, navigate to the "ADD NEW" option.
+From the dropdown menu, select "Project."
+In the provided field under "Code" where it indicates "GitHub," enter the GitHub repository URL.
+Click "Import" to proceed.
+Wait for the website to deploy, which may take between 1–10 minutes as the site builds and caches.
+After deployment, create a custom URL domain ending in .vercel.app, available completely free of charge.
