@@ -3,7 +3,7 @@
 // =====================================================
 const DEFAULT_WISP = "wss://anura.pro/";
 const WISP_SERVERS = [
-    { name: "Rhw's Wisp", url: "wss://anura.pro/" }, //note that this also works with uv static and sj static
+    { name: "Anura's Wisp", url: "wss://anura.pro/" }, //note that this also works with uv static and sj static
     { name: "Anura's Wisp", url: "wss://anura.pro/" }
 ];
 
