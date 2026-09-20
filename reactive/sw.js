@@ -3,7 +3,7 @@ const swPath = self.location.pathname;
 const basePath = swPath.substring(0, swPath.lastIndexOf('/') + 1);
 self.basePath = self.basePath || basePath;
 
-importScripts("https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@1.0.0/dist/uv.sw.js");
+importScripts("https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@2.0.0/dist/uv.sw.js");
 importScripts("https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux/dist/index.js");
 
 const ultraviolet = new UVServiceWorker();
