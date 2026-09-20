@@ -7,6 +7,8 @@
     <title>about:blank</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14'%3E🎮%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@1.0.0/dist/uv.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@1.0.0/dist/uv.config.js"></script>
     <style>
         * {
             margin: 0;
@@ -114,7 +116,8 @@
             color: var(--text);
         }
     </style>
-        <script src="https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.all.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@1.0.0/dist/uv.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@titaniumnetwork-dev/ultraviolet@1.0.0/dist/uv.config.js"></script>
         <script type="module">
                 import * as BareMux from "https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux@2.1.2/dist/index.mjs";
                 window.BareMux = BareMux;
@@ -156,7 +159,7 @@
         let loadingTimeout = null;
         let skipButtonTimeout = null;
         let activeProxyFrame = null;
-        let scramjetFrame = null;
+        let ultravioletFrame = null;
 
         function showError(message) {
             if (loadingTimeout) clearTimeout(loadingTimeout);
@@ -240,18 +243,18 @@
             }
 
             if (event.data?.type === 'proxy-back') {
-                if (scramjetFrame?.back) scramjetFrame.back();
+                if (ultravioletFrame?.back) ultravioletFrame.back();
                 return;
             }
 
             if (event.data?.type === 'proxy-forward') {
-                if (scramjetFrame?.forward) scramjetFrame.forward();
+                if (ultravioletFrame?.forward) ultravioletFrame.forward();
                 return;
             }
 
             if (event.data?.type === 'proxy-reload') {
-                if (scramjetFrame?.reload) {
-                    scramjetFrame.reload();
+                if (ultravioletFrame?.reload) {
+                    ultravioletFrame.reload();
                     return;
                 }
                 if (!activeProxyFrame) return;
@@ -266,8 +269,8 @@
             if (event.data?.type === 'proxy-navigate') {
                 const nextUrl = normalizeProxyInput(event.data?.url);
                 if (!nextUrl) return;
-                if (scramjetFrame?.go) {
-                    scramjetFrame.go(nextUrl);
+                if (ultravioletFrame?.go) {
+                    ultravioletFrame.go(nextUrl);
                     sendProxyMeta({ url: nextUrl });
                     return;
                 }
@@ -338,17 +341,14 @@
                 console.log(`Embed: Init attempt ${initAttempt}/${maxInitRetries}`);
 
                 try {
-                    const { ScramjetController } = $scramjetLoadController();
-                    const scramjet = new ScramjetController({
-                        prefix: basePath + "scramjet/",
-                        files: {
-                            wasm: 'https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.wasm.wasm',
-                            all: 'https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.all.js',
-                            sync: 'https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.sync.js'
+                    if (typeof UV !== 'function') throw new Error('Ultraviolet bundle not found');
+                    const ultraviolet = new UV({
+                        serviceWorker: {
+                            path: basePath + 'sw.js',
+                            scope: basePath
                         }
                     });
-                    if (!$scramjetLoadController) throw new Error('Scramjet controller not found');
-                    await scramjet.init();
+                    await ultraviolet.init();
 
                     // Register service worker with error handling
                     let reg;
@@ -419,8 +419,8 @@
                         loadingUrl.textContent = validatedUrl;
                     }
 
-                    const frame = scramjet.createFrame();
-                    scramjetFrame = frame;
+                    const frame = ultraviolet.createFrame();
+                    ultravioletFrame = frame;
                     frame.frame.id = 'embed-frame';
                     activeProxyFrame = frame.frame;
 

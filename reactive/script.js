@@ -25,7 +25,7 @@ if (!window.BareMux) {
     };
 }
 
-let scramjet;
+let ultraviolet;
 let tabs = [];
 let activeTabId = null;
 let nextTabId = 1;
@@ -37,18 +37,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     try {
         let basePath = location.pathname.replace(/[^/]*$/, '');
         if (!basePath.endsWith('/')) basePath += '/';
-        const ScramjetController = await waitForScramjetController();
-
-        scramjet = new ScramjetController({
-        prefix: basePath + "scramjet/",
-        files: {
-            wasm: "https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.wasm.wasm",
-            all: "https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.all.js",
-            sync: "https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.sync.js"
-        }
-    });
-
-    await scramjet.init();
+        if (typeof UV !== "function") throw new Error("Ultraviolet bundle failed to load.");
+        ultraviolet = new UV({
+            serviceWorker: {
+                path: basePath + "sw.js",
+                scope: basePath
+            }
+        });
+        await ultraviolet.init();
 
     if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register(basePath + 'sw.js', { scope: basePath });
@@ -83,22 +79,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 });
-
-async function waitForScramjetController(timeout = 15000) {
-    const startedAt = Date.now();
-
-    while (Date.now() - startedAt < timeout) {
-        if (typeof window.$scramjetLoadController === "function") {
-            const loaded = window.$scramjetLoadController();
-            if (loaded?.ScramjetController) return loaded.ScramjetController;
-        }
-        await new Promise((resolve) => setTimeout(resolve, 50));
-    }
-
-    throw new Error(
-        "Scramjet failed to load. Refresh the page and check that scramjet.all.js is reachable."
-    );
-}
 
 // =====================================================
 // BROWSER UI
@@ -173,7 +153,7 @@ async function initializeBrowser() {
 // TAB MANAGEMENT
 // =====================================================
 function createTab(makeActive = true) {
-    const frame = scramjet.createFrame();
+    const frame = ultraviolet.createFrame();
     const tab = {
         id: nextTabId++,
         title: "New Tab",
