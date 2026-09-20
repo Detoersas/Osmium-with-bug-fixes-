@@ -39,6 +39,47 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.construction-notice {
+  position: relative;
+  max-width: 680px;
+  margin: 8vh auto;
+  padding: 42px 32px 36px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #f59e0b;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(245, 158, 11, .12), rgba(0, 0, 0, .35));
+  color: #fff7ed;
+}
+.construction-stripes {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 9px;
+  background: repeating-linear-gradient(135deg, #f59e0b 0 14px, #111827 14px 28px);
+}
+.construction-icon { color: #fbbf24; font-size: 42px; margin-bottom: 12px; }
+.construction-kicker { color: #fbbf24; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.construction-notice h1 { margin: 10px 0; }
+.construction-notice p { color: #fed7aa; line-height: 1.6; }
+.proxy-warning {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 4px;
+  width: min(92vw, 520px);
+  padding: 16px 20px;
+  border: 1px solid #f59e0b;
+  border-radius: 10px;
+  background: #29200b;
+  color: #fff7ed;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+.proxy-warning strong { color: #fbbf24; }
+
+
 .header {
   display: flex;
   justify-content: left;

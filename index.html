@@ -85,7 +85,7 @@
           <button class="tab-btn" onclick="openPage('home-page')"><div class="left"><span class="icon"><i data-lucide="house"></i></span><p>Home</p></div></button>
           <button class="tab-btn" onclick="openPage('apps-page')"><div class="left"><span class="icon"><i data-lucide="layout-grid"></i></span><p>Apps</p></div></button>
           <button class="tab-btn" onclick="openPage('game-page')"><div class="left"><span class="icon"><i data-lucide="gamepad-2"></i></span><p>Games</p></div></button>
-          <button class="tab-btn" onclick="openPage('proxy-page')"><div class="left"><span class="icon"><i data-lucide="server"></i></span><p>Proxy</p></div></button>
+          <button class="tab-btn proxy-tab" onclick="openPage('proxy-page')"><div class="left"><span class="icon"><i data-lucide="construction"></i></span><p>Proxy</p></div></button>
           <hr class="nav-divider">
           <div id="tabs-container"></div>
         </div>
@@ -130,6 +130,15 @@
       </div>
       
       <script>
+      function showProxyUnavailable() {
+        const message = document.createElement('div');
+        message.className = 'proxy-warning';
+        message.setAttribute('role', 'alert');
+        message.innerHTML = '<strong>Proxy features are under construction.</strong><span>This content cannot be opened until proxy maintenance is complete.</span>';
+        document.body.appendChild(message);
+        setTimeout(() => message.remove(), 4500);
+      }
+
       function animateAndNewQuote() {
         const q = document.getElementById('mainQuote');
         if (!q) return;
@@ -171,15 +180,15 @@
           <input type="text" id="appsSearchInput" placeholder="Search for an app...">
         </div>
         <div class="game-list apps-list-grid">
-          <button onclick="proxyNavigate('https://watch.spencerdevs.xyz/')" class="game-btn app-btn" data-static-app="true" data-app-title="Movies" type="button">
+          <button onclick="showProxyUnavailable()" class="game-btn app-btn" data-static-app="true" data-app-title="Movies" type="button">
             <img src="/assets/movies.png" alt="Movies">
             <div class="content"><p class="title">Movies</p></div>
           </button>
-          <button onclick="proxyNavigate('https://162.ip.nowgg.fun/apps/uncube/7074/now.html')" class="game-btn app-btn" data-static-app="true" data-app-title="Android" type="button">
+          <button onclick="showProxyUnavailable()" class="game-btn app-btn" data-static-app="true" data-app-title="Android" type="button">
             <img src="https://nowgg.fun/img/android.jpg" alt="Android">
             <div class="content"><p class="title">Android</p></div>
           </button>
-          <button onclick="proxyNavigate('https://nowgg.fun')" class="game-btn app-btn" data-static-app="true" data-app-title="Others" type="button">
+          <button onclick="showProxyUnavailable()" class="game-btn app-btn" data-static-app="true" data-app-title="Others" type="button">
             <img src="/g/images/nowggfun.png" alt="Others">
             <div class="content"><p class="title">Others</p></div>
           </button>
@@ -196,35 +205,14 @@
       </div>
 
       <div class="page" id="proxy-page">
-        <div id="proxy-form-container">
-          <h1>Proxy</h1>
-          <div class="game-search-container proxy-search-row">
-            <span><i data-lucide="search"></i></span>
-            <input type="text" id="proxy-address" placeholder="Search or enter URL" autocomplete="off">
-          </div>
-          <div class="shortcuts">
-            <button onclick="proxyNavigate('https://google.com/')" class="shortcut"><img class="shortcut-image" src="/assets/google.png" alt=""><p>Google</p></button>
-            <button onclick="proxyNavigate('https://youtube.com/')" class="shortcut"><img class="shortcut-image" src="/assets/youtube.png" alt=""><p>YouTube</p></button>
-            <button onclick="proxyNavigate('https://discord.com/')" class="shortcut"><img class="shortcut-image" src="/assets/discord.png" alt=""><p>Discord</p></button>
-            <button onclick="proxyNavigate('https://x.com/')" class="shortcut"><img class="shortcut-image" src="/assets/twitter.png" alt=""><p>Twitter</p></button>
-            <button onclick="proxyNavigate('https://github.com/')" class="shortcut"><img class="shortcut-image" src="/assets/github.png" alt=""><p>GitHub</p></button>
-            <button onclick="proxyNavigate('https://c.ai/')" class="shortcut"><img class="shortcut-image" src="/assets/characterai.png" alt=""><p>character.ai</p></button>
-            <button onclick="proxyNavigate('https://gemini.google.com/')" class="shortcut"><img class="shortcut-image" src="/assets/gemini.png" alt=""><p>Gemini</p></button>
-            <button onclick="proxyNavigate('https://poki.com/')" class="shortcut"><img class="shortcut-image" src="/assets/poki.png" alt=""><p>Poki</p></button>
-          </div>
-        </div>
-<div id="proxy-embed-container" style="display:none; flex-direction:column; height:100%;">
-            <div id="proxy-controls" style="display:flex; gap:10px; align-items:center; padding:10px; background:transparent;">
-              <button onclick="proxyGoBack()" class="control-btn"><i data-lucide="arrow-left"></i></button>
-              <button onclick="proxyGoForward()" class="control-btn"><i data-lucide="arrow-right"></i></button>
-              <button onclick="proxyReload()" class="control-btn"><i data-lucide="rotate-cw"></i></button>
-              <form onsubmit="event.preventDefault(); proxyNavigateToInput();" style="flex:1; display:flex; align-items:center; background:var(--background); border:1px solid var(--background3); border-radius:8px; padding-right:6px;">
-                <input type="text" id="proxy-url-bar" placeholder="Search or Type URL" style="flex:1; padding:8px 12px; border:none; background:transparent; outline:none; color:var(--text); box-shadow:none;">
-                <button type="submit" id="proxyGoButton"><i data-lucide="arrow-right"></i></button>
-              </form>
-            </div>
-            <div id="proxy-frames" style="flex:1; position:relative; overflow:hidden;"></div>
-          </div>
+        <section class="construction-notice" role="status" aria-labelledby="proxy-notice-title">
+          <div class="construction-stripes" aria-hidden="true"></div>
+          <div class="construction-icon"><i data-lucide="construction"></i></div>
+          <p class="construction-kicker">Under construction</p>
+          <h1 id="proxy-notice-title">Proxy services are temporarily unavailable</h1>
+          <p>Proxy features are being rebuilt and cannot be opened right now. Please check back when maintenance is complete.</p>
+          <button class="category-btn" onclick="openPage('home-page')" type="button">Return Home</button>
+        </section>
       </div>
 
       <div class="page" id="privacy-page" style="display:none;">
