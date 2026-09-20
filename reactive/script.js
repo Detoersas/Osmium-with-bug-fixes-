@@ -14,8 +14,15 @@ if (!localStorage.getItem("proxServer")) {
 // =====================================================
 // BROWSER STATE
 // =====================================================
-if (typeof BareMux === 'undefined') {
-    BareMux = { BareMuxConnection: class { constructor() { } setTransport() { } } };
+// BareMux is loaded by the module in index.html. Keep the fallback on window so
+// a failed optional module cannot throw before the proxy has initialized.
+if (!window.BareMux) {
+    window.BareMux = {
+        BareMuxConnection: class {
+            constructor() {}
+            async setTransport() {}
+        }
+    };
 }
 
 let scramjet;
@@ -27,11 +34,12 @@ let nextTabId = 1;
 // INITIALIZATION
 // =====================================================
 document.addEventListener('DOMContentLoaded', async function () {
-    let basePath = location.pathname.replace(/[^/]*$/, '');
-    if (!basePath.endsWith('/')) basePath += '/';
-    const { ScramjetController } = $scramjetLoadController();
+    try {
+        let basePath = location.pathname.replace(/[^/]*$/, '');
+        if (!basePath.endsWith('/')) basePath += '/';
+        const ScramjetController = await waitForScramjetController();
 
-    scramjet = new ScramjetController({
+        scramjet = new ScramjetController({
         prefix: basePath + "scramjet/",
         files: {
             wasm: "https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.wasm.wasm",
@@ -66,8 +74,31 @@ document.addEventListener('DOMContentLoaded', async function () {
         await connection.setTransport("https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.28/dist/index.mjs", [{ wisp: wispUrl }]);
     }
 
-    await initializeBrowser();
+        await initializeBrowser();
+    } catch (error) {
+        console.error("[v0] Proxy initialization failed:", error);
+        const app = document.getElementById("app");
+        if (app) {
+            app.innerHTML = `<div class="message-container" style="display:flex"><div class="message-content"><h1>Connection Error</h1><p>${error.message}</p></div></div>`;
+        }
+    }
 });
+
+async function waitForScramjetController(timeout = 15000) {
+    const startedAt = Date.now();
+
+    while (Date.now() - startedAt < timeout) {
+        if (typeof window.$scramjetLoadController === "function") {
+            const loaded = window.$scramjetLoadController();
+            if (loaded?.ScramjetController) return loaded.ScramjetController;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+
+    throw new Error(
+        "Scramjet failed to load. Refresh the page and check that scramjet.all.js is reachable."
+    );
+}
 
 // =====================================================
 // BROWSER UI
