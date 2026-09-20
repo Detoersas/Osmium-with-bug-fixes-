@@ -37,16 +37,22 @@ document.addEventListener('DOMContentLoaded', async function () {
     try {
         let basePath = location.pathname.replace(/[^/]*$/, '');
         if (!basePath.endsWith('/')) basePath += '/';
-        if (typeof UV !== "function") throw new Error("Ultraviolet bundle failed to load.");
-        ultraviolet = new UV({
+        if (typeof Ultraviolet !== "function") throw new Error("Ultraviolet bundle failed to load.");
+        if (window.__uv$config) {
+            window.__uv$config.prefix = basePath + "service/";
+            window.__uv$config.client = basePath + "uv.client.js";
+            window.__uv$config.bundle = basePath + "uv.bundle.js";
+            window.__uv$config.config = basePath + "uv.config.js";
+            window.__uv$config.handler = basePath + "uv.handler.js";
+            window.__uv$config.sw = basePath + "uv.sw.js";
+        }
+        ultraviolet = new Ultraviolet({
             serviceWorker: {
                 path: basePath + "sw.js",
                 scope: basePath
             }
         });
-        await ultraviolet.init();
-
-    if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register(basePath + 'sw.js', { scope: basePath });
         await navigator.serviceWorker.ready;
         const wispUrl = localStorage.getItem("proxServer") || DEFAULT_WISP;
