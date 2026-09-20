@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="title" content="Online Educational Learning Platform and Teaching Resources" />
   <meta property="description" content="A comprehensive educational platform for learning and teaching Mathematics, Science, English, History, Literature, Writing, Reading, Social Studies, and Geography!" />
-  <title>Google Classroom</title>
+  <title>Osmium Arcade</title>
   <link rel="icon" href="/assets/classroom.ico" />
   <link rel="stylesheet" href="/style.css" />
   <!-- Google tag (gtag.js) -->
@@ -85,7 +85,7 @@
           <button class="tab-btn" onclick="openPage('home-page')"><div class="left"><span class="icon"><i data-lucide="house"></i></span><p>Home</p></div></button>
           <button class="tab-btn" onclick="openPage('apps-page')"><div class="left"><span class="icon"><i data-lucide="layout-grid"></i></span><p>Apps</p></div></button>
           <button class="tab-btn" onclick="openPage('game-page')"><div class="left"><span class="icon"><i data-lucide="gamepad-2"></i></span><p>Games</p></div></button>
-          <button class="tab-btn proxy-tab" onclick="openPage('proxy-page')"><div class="left"><span class="icon"><i data-lucide="construction"></i></span><p>Proxy</p></div></button>
+          <button class="tab-btn proxy-tab" onclick="openPage('proxy-page')"><div class="left"><span class="icon"><i data-lucide="construction"></i></span><p>Proxy Lab</p></div></button>
           <hr class="nav-divider">
           <div id="tabs-container"></div>
         </div>
@@ -386,16 +386,18 @@
               </div>
               <p id="index-cloak-status">Current: Google Classroom</p>
             </div>
-            <div class="setting-card">
-              <h2>WISP Server</h2>
-              <div id="index-wisp-list"></div>
-              <div class="wisp-input-row">
-                <input id="index-custom-wisp-input" type="text" placeholder="wss://your-wisp-server.com/wisp/" />
-                <button id="index-add-wisp">Add</button>
-                <button id="index-reset-wisp">Reset Default</button>
+            <div class="setting-card setting-card-locked" aria-disabled="true">
+              <div class="setting-card-heading">
+                <h2>WISP Server</h2>
+                <span class="locked-badge"><i data-lucide="lock-keyhole"></i> Locked</span>
               </div>
-              <p id="index-wisp-status">Current: Rhw's Wisp</p>
+              <div class="locked-setting-list" aria-label="WISP server options">
+                <div class="locked-setting-option is-current"><span>Rhw&apos;s Wisp</span><code>wss://wisp.rhw.one/wisp/</code><strong>Using</strong></div>
+                <div class="locked-setting-option"><span>Anura&apos;s Wisp</span><code>wss://anura.pro/</code><strong>Use</strong></div>
               </div>
+              <p class="locked-setting-note">WISP server changes are disabled while proxy services are under construction.</p>
+              <p id="index-wisp-status">Current: Rhw&apos;s Wisp</p>
+            </div>
           </div>
         </div>
       </div>
