@@ -1,0 +1,16 @@
+{
+  "name": "osmium-static",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Osmium website and Ultraviolet proxy",
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "@titaniumnetwork-dev/ultraviolet": "^3.2.10"
+  }
+}

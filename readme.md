@@ -4,7 +4,7 @@ make sure to read the license
 
 ### Osmium is a free website with
  - 1500+ games
- - scramjet proxy
+ - Ultraviolet proxy
  - byod
 
 #### Join our discord [here!](https://discord.com/invite/BBcHrUYYNv)

@@ -19,7 +19,41 @@ Unauthorized copying prohibited.
   --game-card-padding: calc(12px * var(--ui-scale));
   --game-icon-size: calc(92px * var(--ui-scale));
   --bezel-size: clamp(8px, calc(14px * var(--ui-scale)), 18px);
-  --panel-radius: clamp(10px, calc(16px * var(--ui-scale)), 20px);
+  --panel-radius: 0;
+  --mango: #ffb000;
+  --mango-dark: #d97706;
+  --mango-soft: #ffd166;
+}
+
+/* Mango is the default arcade theme. */
+body,
+body[theme="mango"] {
+  --background: #17100a;
+  --background2: #24170a;
+  --background3: #3a250d;
+  --background4: #5a390e;
+  --shadow: rgba(255, 176, 0, 0.26);
+  --blue: #ffb000;
+  --green: #ffd166;
+  --mauve: #ff8c00;
+  --text: #fff4d6;
+  --mango: #ffb000;
+  --mango-dark: #d97706;
+  --mango-soft: #ffd166;
+  --panel-radius: 0;
+}
+
+body[theme="mango"] .tab-btn.active,
+body[theme="mango"] .category-btn,
+body[theme="mango"] .construction-notice,
+body[theme="mango"] .proxy-warning {
+  border-color: var(--mango);
+}
+
+body[theme="mango"] .welcome,
+body[theme="mango"] h1,
+body[theme="mango"] .logo-name {
+  color: var(--mango-soft);
 }
 
 body[theme="midnight"] { /* og markos classroom! theme */
@@ -1236,6 +1270,115 @@ input {
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* Final visual overrides: mango palette, square edges, top navigation. */
+body[theme] {
+  --background: #17100a;
+  --background2: #24170a;
+  --background3: #3a250d;
+  --background4: #5a390e;
+  --shadow: rgba(255, 176, 0, 0.26);
+  --blue: #ffb000;
+  --green: #ffd166;
+  --mauve: #ff8c00;
+  --text: #fff4d6;
+  --mango: #ffb000;
+  --mango-dark: #d97706;
+  --mango-soft: #ffd166;
+  --panel-radius: 0;
+}
+
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+.container,
+.container.nav-left {
+  flex-direction: column;
+}
+
+nav,
+.container.nav-left nav {
+  width: 100%;
+  height: auto;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  overflow: visible;
+  background: var(--background2);
+  border-bottom: 2px solid var(--mango);
+}
+
+nav:hover {
+  width: 100%;
+}
+
+nav .top,
+nav .sidebar-bottom,
+nav .tabs,
+nav .bottom-nav,
+nav #tabs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav .top {
+  flex: 1;
+  min-width: 0;
+}
+
+nav .tabs {
+  padding: 8px 12px;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+nav .logo {
+  padding: 10px 14px;
+}
+
+nav .tab-btn {
+  width: auto;
+  min-width: max-content;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+}
+
+nav .tab-btn:hover,
+nav .tab-btn.active {
+  border-color: var(--mango);
+  background: var(--background3);
+}
+
+nav .tab-btn .left p {
+  display: block;
+}
+
+nav .nav-divider {
+  display: none;
+}
+
+nav .sidebar-bottom {
+  padding: 0 10px;
+}
+
+nav .bottom-nav {
+  gap: 4px;
+}
+
+.proxy-tab,
+.construction-kicker,
+.construction-notice h1 {
+  color: var(--mango-soft);
+}
+
+.proxy-warning,
+.construction-notice {
+  border: 2px solid var(--mango) !important;
+  background: repeating-linear-gradient(135deg, rgba(255,176,0,.14) 0 14px, rgba(23,16,10,.94) 14px 28px) !important;
 }
 
 .control-btn:hover {
