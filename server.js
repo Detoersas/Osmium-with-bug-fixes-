@@ -12,7 +12,13 @@ const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css
 
 function serveFile(req, res) {
   const requestPath = decodeURIComponent(new URL(req.url, `http://${req.headers.host}`).pathname);
-  if (requestPath === "/uv.config.js") return serveFile({ ...req, url: "/uv/uv.config.js" }, res);
+  if (requestPath === "/uv.config.js" || requestPath === "/uv/uv.config.js") {
+    return fs.readFile(path.join(root, "uv.config.js"), (error, data) => {
+      if (error) { res.writeHead(404); res.end("Not found"); return; }
+      res.writeHead(200, { "Content-Type": "text/javascript", "Cache-Control": "no-store" });
+      res.end(data);
+    });
+  }
   if (requestPath.startsWith("/uv/")) {
     const assetPath = path.resolve(uvPath, requestPath.slice("/uv/".length));
     if (!assetPath.startsWith(`${path.resolve(uvPath)}${path.sep}`)) {
