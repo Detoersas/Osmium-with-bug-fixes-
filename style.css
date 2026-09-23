@@ -1050,6 +1050,70 @@ input {
   font-weight: 600;
 }
 
+/* Osmium // Index redesign: sharp geometry, mango signal, no rounded UI. */
+:root {
+  --background: #100d08;
+  --background2: #19130b;
+  --background3: #34230e;
+  --background4: #5a3b12;
+  --mango: #ffb000;
+  --mango-soft: #ffd166;
+  --mango-dark: #c56c00;
+  --text: #fff6df;
+  --panel-radius: 0;
+}
+
+*, *::before, *::after { border-radius: 0 !important; }
+body { background: var(--background); color: var(--text); font-family: "Arial Narrow", "Inter", Arial, sans-serif; letter-spacing: .01em; }
+.container { display: block; height: 100vh; overflow: hidden; }
+nav { width: 100%; height: 76px; display: flex; flex-direction: row; align-items: center; border-bottom: 2px solid var(--mango); background: #0c0905; padding: 0 32px; overflow: visible; direction: ltr; }
+nav:hover { width: 100%; }
+.top { width: 100%; display: flex; align-items: center; gap: 48px; }
+.logo { display: flex; align-items: center; gap: 12px; min-width: 180px; }
+.logo img { width: 34px; height: 34px; object-fit: contain; filter: sepia(1) saturate(5); }
+.logo-name { color: var(--mango-soft); font-size: 1.25rem; letter-spacing: .18em; text-transform: uppercase; }
+.logo h6 { color: var(--mango); font-size: .65rem; letter-spacing: .12em; }
+.tabs, .bottom-nav { display: flex; align-items: center; gap: 4px; }
+.tabs { flex: 1; }
+.tab-btn { min-height: 42px; padding: 0 18px; border: 1px solid transparent; background: transparent; color: #c8bda8; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; cursor: pointer; }
+.tab-btn:hover, .tab-btn.active { color: var(--mango); border-color: var(--mango); background: #241707; }
+.tab-btn .left { display: flex; align-items: center; gap: 9px; }
+.tab-btn p { margin: 0; }
+.tab-btn .icon { display: inline-flex; }
+.tab-btn [data-lucide] { stroke: currentColor; }
+.nav-divider, .server-switcher { display: none; }
+.sidebar-bottom { margin-left: auto; }
+.main-content { width: 100%; height: calc(100vh - 76px); margin: 0; padding: 28px 32px 50px; overflow-y: auto; background: linear-gradient(135deg, #100d08 0%, #19130b 54%, #241707 100%); }
+.page { max-width: 1220px; margin: 0 auto; }
+.page > h1 { margin: 0 0 24px; padding-bottom: 14px; border-bottom: 2px solid var(--mango); color: var(--mango-soft); font-size: clamp(2rem, 5vw, 4.6rem); line-height: .9; letter-spacing: -.06em; text-transform: uppercase; }
+.home-page-container { min-height: calc(100vh - 155px); display: grid; align-items: center; border-left: 2px solid var(--mango); padding: 40px clamp(24px, 8vw, 120px); background: linear-gradient(90deg, rgba(255,176,0,.1), transparent 65%); }
+.welcome { color: var(--mango-soft); font-size: clamp(4rem, 13vw, 11rem); line-height: .78; letter-spacing: -.1em; text-transform: uppercase; text-align: left; }
+.main-text { text-align: left !important; }
+#mainQuote { max-width: 540px; margin: 28px 0 !important; color: #d6c8ad; font-size: 1.05rem; line-height: 1.5; }
+.info-widgets { justify-content: flex-start !important; color: var(--mango); opacity: 1 !important; }
+.game-search-container { border: 2px solid var(--mango); background: #0c0905; }
+.game-search-container input { color: var(--text); background: transparent; }
+.game-search-container button { background: var(--mango); color: #100d08; }
+.game-list { gap: 12px; }
+.game-btn, .setting-card, .category-btn, .select-control, #chat-display { border: 1px solid #6d4a18; background: #19130b; box-shadow: 6px 6px 0 rgba(0,0,0,.25); }
+.game-btn:hover, .category-btn:hover { border-color: var(--mango); transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--mango-dark); }
+.game-btn img { border: 1px solid #6d4a18; }
+.category-btn { color: var(--mango-soft); border-color: var(--mango); padding: 12px 18px; text-transform: uppercase; letter-spacing: .1em; }
+.settings-tabs { border-bottom: 2px solid var(--mango); }
+.settings-tabs button.active { color: var(--mango); border-color: var(--mango); }
+@media (max-width: 720px) {
+  nav { height: auto; min-height: 132px; padding: 16px; align-items: flex-start; }
+  .top { display: block; }
+  .logo { margin-bottom: 12px; }
+  .tabs { gap: 2px; overflow-x: auto; }
+  .tab-btn { padding: 0 10px; white-space: nowrap; }
+  .sidebar-bottom { position: absolute; top: 77px; right: 12px; }
+  .sidebar-bottom .tab-btn { min-width: 40px; padding: 0 8px; }
+  .sidebar-bottom .tab-btn p { display: none; }
+  .main-content { height: calc(100vh - 132px); padding: 20px 16px 36px; }
+  .home-page-container { padding: 28px 18px; }
+}
+
 .switch {
   position: relative;
   width: 52px;
