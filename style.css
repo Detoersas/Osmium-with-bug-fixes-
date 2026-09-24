@@ -1102,6 +1102,54 @@ nav:hover { width: 100%; }
 .category-btn { color: var(--mango-soft); border-color: var(--mango); padding: 12px 18px; text-transform: uppercase; letter-spacing: .1em; }
 .settings-tabs { border-bottom: 2px solid var(--mango); }
 .settings-tabs button.active { color: var(--mango); border-color: var(--mango); }
+/* Osmium // editorial workspace redesign */
+:root {
+  --background: #111214;
+  --background2: #18191c;
+  --background3: #24262b;
+  --background4: #34363c;
+  --text: #e8e5df;
+  --mango: #d8a56d;
+  --mango-soft: #f0d6b0;
+  --mango-dark: #8b6240;
+  --ui-scale: .78;
+}
+body { background: #111214; color: var(--text); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 14px; }
+.container { background: #111214; }
+nav { height: 68px; padding: 0 28px; background: #141518; border-bottom: 1px solid #35373c; }
+.top { gap: 32px; }
+.logo { min-width: 160px; }
+.logo img { width: 28px; height: 28px; filter: grayscale(1) brightness(1.5); }
+.logo-name { color: #f2eee6; font-size: 1.05rem; letter-spacing: .28em; }
+.logo h6 { color: var(--mango); }
+.tab-btn { min-height: 38px; padding: 0 14px; color: #8e9198; font-size: .68rem; letter-spacing: .14em; }
+.tab-btn:hover, .tab-btn.active { color: var(--mango-soft); border-color: var(--mango-dark); background: #202126; }
+.main-content { height: calc(100vh - 68px); padding: 36px 6vw 64px; background: radial-gradient(circle at 78% 10%, #29241f 0, #111214 34%); }
+.page { max-width: 1180px; }
+.page > h1 { font-size: clamp(2.4rem, 6vw, 5.8rem); font-weight: 500; letter-spacing: -.09em; color: #f1eee8; border-color: #3b3d43; margin-bottom: 30px; }
+.page-kicker { color: var(--mango); text-transform: uppercase; letter-spacing: .2em; font-size: .68rem; margin-bottom: 14px; }
+.page-lede { max-width: 640px; color: #f1eee8; font-size: 1.35rem; line-height: 1.35; }
+.muted-copy { max-width: 650px; color: #92959c; line-height: 1.7; }
+.home-page-container { min-height: calc(100vh - 180px); padding: 4vh 0; border-left: 0; background: none; align-items: center; }
+.welcome { font-size: clamp(4rem, 12vw, 10rem); font-weight: 400; letter-spacing: -.11em; color: #f1eee8; }
+#mainQuote { color: #989ba1; }
+.info-widgets { color: var(--mango) !important; }
+.game-search-container { width: min(440px, 100%) !important; border: 1px solid #494b51; background: #18191c; }
+.game-search-container button { background: var(--mango); color: #111214; }
+.game-btn, .setting-card, .category-btn, .select-control, #chat-display { border: 1px solid #37393f; background: #18191c; box-shadow: none; }
+.game-btn:hover, .category-btn:hover { border-color: var(--mango); box-shadow: none; transform: none; }
+.category-btn { color: var(--mango-soft); border-color: var(--mango-dark); padding: 11px 15px; }
+.grades-intro { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 28px; }
+.grades-open { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.grades-frame-wrap { border: 1px solid #3c3e44; background: #18191c; }
+.grades-frame-label { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; color: #95989f; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; border-bottom: 1px solid #34363b; }
+.grades-frame-label span:first-child { color: var(--mango-soft); }
+.grades-frame { display: block; width: 100%; height: min(65vh, 680px); border: 0; background: #fff; }
+.grades-launch-panel { min-height: min(55vh, 520px); display: grid; place-items: center; align-content: center; gap: 14px; padding: 48px 24px; text-align: center; background: linear-gradient(135deg, #1a1b1f, #202126); }
+.grades-launch-panel > svg { width: 34px; height: 34px; color: var(--mango); }
+.grades-launch-panel h2 { color: #f1eee8; font-size: 1.5rem; font-weight: 500; }
+.grades-launch-panel p { max-width: 520px; color: #9b9ea5; line-height: 1.7; }
+.settings-container .setting-card { padding: 20px; }
 @media (max-width: 720px) {
   nav { height: auto; min-height: 132px; padding: 16px; align-items: flex-start; }
   .top { display: block; }
