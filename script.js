@@ -121,6 +121,11 @@ window.addEventListener('DOMContentLoaded', function(){
         img.decoding = 'async';
         if (index < 12) img.fetchPriority = 'high';
     });
+
+    document.querySelectorAll('#game-list .game-btn, #game-list .game-button').forEach(function(game) {
+        game.dataset.proxy = 'true';
+        game.setAttribute('aria-label', (game.getAttribute('aria-label') || game.textContent.trim()) + ' — may not work with proxy');
+    });
 });
 
 /* --- Adaptive particle count based on FPS ---
@@ -235,7 +240,7 @@ window.addEventListener('DOMContentLoaded', function(){
         slides: { title: 'Presentation - Google Slides', icon: '/s/assets/slides.ico' }
     };
 
-    window.DEFAULT_CLOAK = { title: "Markos's Classroom", icon: '/s/dogfavi.png' };
+    window.DEFAULT_CLOAK = { title: "NeonNest Arcade", icon: '/assets/neonmark.png' };
 
     // Apply cloak immediately on page load (before DOMContentLoaded)
     function applyTabCloak() {
