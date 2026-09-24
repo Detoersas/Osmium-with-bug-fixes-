@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="title" content="Online Educational Learning Platform and Teaching Resources" />
   <meta property="description" content="A comprehensive educational platform for learning and teaching Mathematics, Science, English, History, Literature, Writing, Reading, Social Studies, and Geography!" />
-  <title>NeonNest Arcade</title>
+  <title>Student Portal SIS</title>
   <link rel="icon" href="/assets/classroom.ico" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/theme-overrides.css" />
@@ -79,7 +79,7 @@
       <div class="top">
         <a href="#" class="logo" onclick="openPage('home-page'); return false;">
 <img src="/assets/neonmark.png" alt="NeonNest">
-          <h2 class="logo-name">NeonNest</h2>
+          <h2 class="logo-name">Student Portal SIS</h2>
           <h6>v3</h6>
         </a>
         <div class="tabs">
@@ -107,26 +107,22 @@
 
     <div class="main-content" id="main-content">
       <div class="page" id="home-page">
-        <div class="home-page-container">
-          <div class="main-text center-container text-center main-div">
-              <h1 class="welcome" style="margin-bottom: 0;">NeonNest</h1>
-              <p id="mainQuote" onclick="animateAndNewQuote()" style="cursor: pointer; opacity: 0.8; margin-top: 5px; margin-bottom: 15px; min-height: 24px;">...</p>
-              
-              <div class="info-widgets" style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; font-size: 14px; opacity: 0.7;">
-                <div id="clock-widget" style="display: flex; align-items: center; gap: 5px;">
-                  <i data-lucide="clock" style="width: 16px; height: 16px;"></i> <span id="clock-text">--:--</span>
-                </div>
-                <div id="battery-widget" style="display: flex; align-items: center; gap: 5px;">
-                   <i data-lucide="battery" style="width: 16px; height: 16px;"></i> <span id="battery-text">--%</span>
-                </div>
-              </div>
-
-              <div class="game-search-container" style="width: 320px; margin: 0 auto; margin-top: 15px;">
-                <span><i data-lucide="search"></i></span>
-                <input type="text" id="homeSearchBar" placeholder="Search all games...">
-                <button id="homeSearchButton"><i data-lucide="arrow-right"></i></button>
-              </div>
-          </div>
+<div class="sis-page">
+          <h1 class="sis-title">Grades and Attendance: Omasta, Dexter Miller</h1>
+          <div class="sis-tabs"><button class="sis-tab active">Grades and Attendance</button><button class="sis-tab">Standards Grades</button></div>
+          <section class="sis-card">
+            <div class="sis-section-title">Attendance By Class</div>
+            <table class="grades-table"><thead><tr><th>Exp</th><th colspan="7">Last Week</th><th colspan="7">This Week</th><th>Course</th><th>Q1</th><th>F1</th><th>Q2</th><th>E1</th><th>S1</th><th>Q3</th><th>Q4</th><th>S2</th><th>Absences</th><th>Tardies</th></tr><tr><th></th><th>M</th><th>T</th><th>W</th><th>H</th><th>F</th><th>S</th><th>S</th><th>M</th><th>T</th><th>W</th><th>H</th><th>F</th><th>S</th><th>S</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody>
+              <tr><td>1 (A-B)</td><td colspan="14" class="empty-days"></td><td class="course">Art 1<br><a href="#">▣ Email Todd, Eric - Rm: 232</a></td><td class="score">88</td><td colspan="7" class="empty-days"></td><td>0</td><td>0</td></tr>
+              <tr><td>2 (A-B)</td><td colspan="14" class="empty-days"></td><td class="course">English 2<br><a href="#">▣ Email Keefer, Noah - Rm: 362</a></td><td class="score">84</td><td colspan="7" class="empty-days"></td><td>0</td><td>0</td></tr>
+              <tr><td>3 (A-B)</td><td colspan="14" class="empty-days"></td><td class="course">Biology 1 H<br><a href="#">▣ Email Foxworth, Charles - Rm: 215</a></td><td class="score">87</td><td colspan="7" class="empty-days"></td><td>0</td><td>0</td></tr>
+              <tr><td>4 (A-B)</td><td colspan="14" class="empty-days"></td><td class="course">French 1<br><a href="#">▣ Email Elrod, Tiffanie - Rm: 223</a></td><td class="score">79</td><td colspan="7" class="empty-days"></td><td>0</td><td>0</td></tr>
+            </tbody></table>
+            <p class="gpa-line">Current Q2 MS GPA (Q1): 3.575</p><a class="dropped-link" href="#">Show dropped classes also</a>
+            <div class="sis-section-title day-title">Attendance By Day</div>
+            <div class="attendance-summary"><span>Last Week</span><span>This Week</span><span>Absences</span><span>Tardies</span></div>
+          </section>
+          <section class="legend-card"><h3>Legend</h3><p>Attendance Codes: Blank=Present | SC-UNEX=Unexcused/Unverified | SC-EX=Excused | SC-PA=Principal Approved | SC-MED=Medical</p></section>
         </div>
       </div>
       

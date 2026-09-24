@@ -1,129 +1,126 @@
-/* NeonNest visual layer: keeps the existing layout and behavior intact. */
+/* Student Portal SIS visual layer: preserves the existing pages and interactions while matching the supplied SIS reference. */
 :root {
-  --background: #07111f;
-  --background2: #0d1d33;
-  --background3: #163456;
-  --background4: #24547d;
-  --shadow: rgba(48, 213, 255, 0.24);
-  --blue: #30d5ff;
-  --green: #7ef29a;
-  --mauve: #c084fc;
-  --text: #e9f7ff;
-  --mango: #ff5d8f;
-  --mango-soft: #ff9db8;
+  --background: #f7f7f7;
+  --background2: #ffffff;
+  --background3: #e9eef1;
+  --background4: #d7e1e6;
+  --blue: #005595;
+  --text: #263746;
+  --mango: #d23f45;
 }
-
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
 body {
-  --background: #07111f;
-  --background2: #0d1d33;
-  --background3: #163456;
-  --background4: #24547d;
-  --blue: #30d5ff;
-  --green: #7ef29a;
-  --mauve: #c084fc;
-  --text: #e9f7ff;
-  --mango: #ff5d8f;
-  --mango-soft: #ff9db8;
-  background: radial-gradient(circle at 15% 0%, #183a63 0, transparent 32%), var(--background);
-  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+  color: #263746;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  overflow-x: hidden;
 }
-
-nav {
-  background: #0a1830;
-  border-right: 1px solid rgba(48, 213, 255, 0.18);
+body::before {
+  content: "Student Portal SIS";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 37px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  color: #fff;
+  background: #07528d;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .01em;
 }
-
+#particles-js { display: none; }
+.container { display: block; min-height: 100vh; }
+nav, nav:hover, body nav:hover {
+  direction: ltr;
+  position: fixed;
+  z-index: 10;
+  top: 37px;
+  bottom: 0;
+  left: 0;
+  width: 181px !important;
+  min-width: 181px;
+  max-width: 181px;
+  padding: 0;
+  overflow: hidden;
+  color: #111;
+  background: #f1f4f6 !important;
+  border: 0;
+  border-right: 1px solid #c8d0d5;
+  box-shadow: none;
+}
+nav .top { display: block; flex: none !important; height: auto; min-height: 0; }
+nav .logo, nav .tabs { flex: none !important; }
+nav .tabs { position: static; height: auto; max-height: none; }
+nav .sidebar-bottom { position: static; }
+nav .bottom-nav { display: flex; flex-direction: column; gap: 0; }
 .logo {
-  padding: 12px 14px;
-  gap: 8px;
+  height: 45px;
+  padding: 10px 16px !important;
+  color: #263746;
+  background: #f1f4f6;
+  border-bottom: 1px solid #c8d0d5;
 }
-
-.logo img {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  box-shadow: 0 0 18px rgba(48, 213, 255, 0.35);
+.logo img { width: 24px !important; height: 24px !important; border-radius: 0; box-shadow: none; }
+.logo-name { color: #263746 !important; font-size: 0 !important; }
+.logo-name::after { content: "Navigation"; font-size: 16px; }
+.logo h6 { display: none; }
+.tabs { padding: 7px 5px !important; }
+nav .tab-btn, nav:not(:hover) .tab-btn { width: 100%; min-height: 45px; padding: 0 !important; border: 0; border-radius: 0 !important; color: #111; background: transparent; text-align: left; opacity: 1; }
+nav:not(:hover) .logo-name, nav:not(:hover) .logo h6, nav:not(:hover) .tab-btn p { opacity: 1; max-width: none; pointer-events: auto; }
+nav:not(:hover) .tab-btn .left { gap: 9px; width: auto; }
+nav .tab-btn .left { display: flex; align-items: center; gap: 9px; padding: 7px 10px !important; }
+nav .tab-btn .icon { width: 26px; color: #07528d; }
+nav [data-lucide] { stroke: #07528d !important; }
+nav .tab-btn p { margin: 0; color: #111; font-size: 14px; }
+nav .tab-btn:hover, nav .tab-btn.active { color: #07528d; background: #fff; box-shadow: inset 4px 0 #07528d; }
+nav .tab-btn:hover p, nav .tab-btn.active p { color: #07528d; }
+.nav-divider { border: 0; border-top: 1px solid #c8d0d5; margin: 4px 10px; }
+.sidebar-bottom { padding: 0 5px 12px; }
+.bottom-nav { display: block; }
+body .container { display: block !important; min-height: 100vh; }
+.main-content { position: relative; z-index: 1; min-height: 100vh; margin-left: 181px !important; padding-top: 37px; background: #fff; }
+.page { min-height: calc(100vh - 37px); padding: 0 20px 36px; }
+#home-page { display: block !important; }
+.sis-page { padding-top: 27px; }
+.sis-title { margin: 0 0 28px; color: #384b5b !important; font-size: 26px; font-weight: 700; letter-spacing: 0; }
+.sis-tabs { display: flex; gap: 0; border-bottom: 1px solid #c8c8c8; }
+.sis-tab { padding: 7px 15px; border: 1px solid #c8c8c8; border-bottom: 0; border-radius: 3px 3px 0 0; color: #1d3f5a !important; background: #f7f7f7 !important; opacity: 1; }
+.sis-tab + .sis-tab { margin-left: 2px; }
+.sis-tab.active { background: #fff; }
+.sis-card { margin-top: 20px; padding: 10px; border: 1px solid #c8c8c8; border-radius: 4px; }
+.sis-section-title { padding: 7px; color: #2e3942; background: #a8c7d4; text-align: center; font-weight: 700; }
+.grades-table { width: 100%; min-width: 1080px; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
+.grades-table th, .grades-table td { height: 39px; padding: 5px 4px; border: 1px solid #c4c9cc; text-align: center; }
+.grades-table thead th { height: 31px; background: #a8c7d4; font-weight: 700; }
+.grades-table thead tr:nth-child(2) th { height: 27px; }
+.grades-table tbody tr:nth-child(odd) td { background: #efefef; }
+.grades-table td.empty-days { background: repeating-linear-gradient(135deg, #eee 0 4px, #ddd 4px 7px) !important; }
+.grades-table .course { width: 28%; padding: 6px; color: #344553; text-align: left; font-size: 13px; }
+.grades-table .course a, .dropped-link { color: #006cc0; text-decoration: none; }
+.grades-table .score { color: #0067ad; font-weight: 700; }
+.gpa-line { margin: 16px 0 8px; text-align: center; }
+.dropped-link { display: block; text-align: center; }
+.day-title { margin-top: 21px; }
+.attendance-summary { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; padding: 10px; color: #263746; background: #a8c7d4; font-weight: 700; text-align: center; }
+.legend-card { margin-top: 20px; padding: 0 10px 12px; border: 1px solid #c8c8c8; border-radius: 4px; }
+.legend-card h3 { margin: 0 -10px 10px; padding: 5px 10px; border-bottom: 1px solid #c8c8c8; font-size: 15px; text-decoration: underline; }
+.legend-card p { margin: 0; line-height: 1.45; }
+#apps-page, #game-page, #proxy-page, #settings-page { background: #fff; }
+.game-search-container, #uv-form, .ai-input, .panel, .game-btn, .page button { border-color: #c8d0d5; background: #fff; border-radius: 2px; }
+.proxy-warning, .construction-notice { border-color: #c33 !important; border-radius: 2px; background: #fff4f4 !important; box-shadow: 0 2px 8px #bbb; }
+@media (max-width: 760px) {
+  nav { width: 58px !important; min-width: 58px; }
+  nav .logo { justify-content: center; padding: 10px 5px !important; }
+  nav .logo-name, nav .tab-btn p { display: none; }
+  nav .tab-btn .left { justify-content: center; padding: 10px 4px !important; }
+  .main-content { margin-left: 58px; }
+  .page { padding: 0 10px 25px; }
+  .sis-title { font-size: 20px; }
+  .sis-card { overflow-x: auto; }
+  .grades-table { min-width: 1040px; }
 }
-
-.logo-name {
-  color: #ffffff;
-  font-size: 18px;
-  letter-spacing: -0.02em;
-}
-
-nav .tab-btn .left { padding: 8px 10px; }
-nav .tab-btn { border-radius: 9px; }
-nav .tab-btn:hover,
-nav .tab-btn.active { background: rgba(48, 213, 255, 0.12); color: var(--blue); }
-
-.main-content { background: rgba(7, 17, 31, 0.38); }
-
-h1, .welcome { color: #ffffff; letter-spacing: -0.035em; }
-
-.game-search-container,
-#uv-form,
-.ai-input,
-.panel,
-.game-btn,
-.page button {
-  border-color: rgba(48, 213, 255, 0.2);
-  background: rgba(13, 29, 51, 0.88);
-}
-
-.game-search-container:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(48, 213, 255, 0.12); }
-.game-btn { border-radius: 14px !important; }
-.game-btn:hover { border-color: var(--mango); box-shadow: 0 10px 28px rgba(5, 10, 25, 0.35); }
-.start, .selected-category { background: var(--blue) !important; color: #06111f !important; }
-
-/* Compact top navigation on small screens, matching the reference's utility-bar feel. */
-@media (max-width: 900px) {
-  nav, nav:hover { height: 52px; min-height: 52px; border-bottom: 1px solid rgba(48, 213, 255, 0.3); }
-  nav .logo { padding: 8px 12px; }
-  nav .logo img { width: 24px; height: 24px; }
-  nav .logo-name { font-size: 16px; }
-  nav .tabs { padding: 5px 8px; gap: 4px; }
-  nav .tab-btn { padding: 6px 8px; }
-}
-
-.proxy-warning,
-.construction-notice {
-  border: 1px solid var(--mango) !important;
-  background: linear-gradient(135deg, rgba(255, 93, 143, 0.14), rgba(13, 29, 51, 0.96)) !important;
-  box-shadow: 0 8px 24px rgba(255, 93, 143, 0.12);
-}
-
-/* Small, non-blocking notice for games that rely on a proxied frame. */
-.game-btn[data-proxy="true"]::after {
-  content: "May not work with proxy";
-  display: block;
-  margin-top: 7px;
-  color: var(--mango-soft);
-  font-size: 10px;
-  line-height: 1.2;
-  text-align: center;
-}
-
-::selection { background: var(--mauve); color: #081221; }
-::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-
-@media (min-width: 901px) {
-  .container { gap: 0; }
-  nav { width: clamp(64px, calc(82px * var(--ui-scale)), 110px); }
-  nav:hover { width: clamp(220px, calc(260px * var(--ui-scale)), 360px); }
-}
-
-@media (max-width: 600px) {
-  .game-btn[data-proxy="true"]::after { font-size: 9px; }
-}
-
-body[theme],
-body[theme="mango"] { --background: #07111f; --background2: #0d1d33; --background3: #163456; --background4: #24547d; --blue: #30d5ff; --green: #7ef29a; --mauve: #c084fc; --text: #e9f7ff; --mango: #ff5d8f; --mango-soft: #ff9db8; }
-body[theme] .logo-name, body[theme] h1, body[theme] .welcome,
-body[theme="mango"] .logo-name, body[theme="mango"] h1, body[theme="mango"] .welcome { color: #ffffff; }
-body[theme] .proxy-tab, body[theme="mango"] .proxy-tab { color: var(--mango-soft); }
-body[theme] .tab-btn.active, body[theme] .category-btn,
-body[theme="mango"] .tab-btn.active, body[theme="mango"] .category-btn { border-color: var(--blue); }
-body[theme] .construction-notice, body[theme] .proxy-warning,
-body[theme="mango"] .construction-notice, body[theme="mango"] .proxy-warning { border-color: var(--mango) !important; }
-
-/* Apply the layer after the existing stylesheet without deleting any original rules. */
