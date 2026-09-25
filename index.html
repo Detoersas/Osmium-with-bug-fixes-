@@ -398,13 +398,22 @@
               <p class="locked-setting-note">WISP server changes are disabled while proxy services are under construction.</p>
               <p id="index-wisp-status">Current: Rhw&apos;s Wisp</p>
             </div>
-            <div class="setting-card wifi-portal-card">
+            <div class="setting-card dns-help-card">
               <div class="setting-card-heading">
-                <h2>WiFi Welcome Portal</h2>
-                <span class="locked-badge"><i data-lucide="wifi"></i> Network access</span>
+                <h2>DNS setup</h2>
+                <span class="locked-badge"><i data-lucide="globe-2"></i> Guest network</span>
               </div>
-              <p>Share the setup guide with guests on your password-free network. The guide explains how to connect and request access responsibly.</p>
-              <a class="wifi-portal-link" href="/howtogeteverythingunlocked/">Open WiFi guide <i data-lucide="arrow-up-right"></i></a>
+              <p>To use the network owner&apos;s DNS service, open your connected Wi-Fi settings, select DNS server assignment, choose Manual, enable IPv4, and enter the DNS addresses supplied by the network owner.</p>
+              <ol class="dns-steps">
+                <li>Open <strong>Network &amp; internet → Wi-Fi</strong> and select your connected network.</li>
+                <li>Choose <strong>DNS server assignment → Edit</strong>, then select <strong>Manual</strong>.</li>
+                <li>Enable <strong>IPv4</strong>, enter the provided preferred and alternate DNS addresses, then select <strong>Save</strong>.</li>
+              </ol>
+              <p class="locked-setting-note">Only use DNS values provided by the owner of this network. Changing DNS does not replace router authorization or a captive portal.</p>
+              <div class="dns-images">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/step%201%20editd-ISNpm5jlG9bdxWxqmShyoomeZWCgw1.png" alt="Windows Wi-Fi settings showing DNS server assignment Edit" loading="lazy">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/step%202%20edited-uLyx2f0X8lzvkgReolpjJqVHiBTRME.png" alt="Windows manual DNS settings with IPv4 enabled" loading="lazy">
+              </div>
             </div>
           </div>
         </div>

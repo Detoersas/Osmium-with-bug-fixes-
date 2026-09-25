@@ -25,9 +25,11 @@ Unauthorized copying prohibited.
   --mango-soft: #ffd166;
 }
 
-.wifi-portal-card { border-color: rgba(56, 189, 248, 0.45); }
-.wifi-portal-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #7dd3fc; font-weight: 700; }
-.wifi-portal-link [data-lucide] { width: 16px; height: 16px; }
+.dns-help-card { border-color: rgba(56, 189, 248, 0.45); }
+.dns-steps { margin: 16px 0; padding-left: 22px; line-height: 1.7; }
+.dns-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.dns-images img { width: 100%; border: 1px solid var(--background4); border-radius: 10px; }
+@media (max-width: 720px) { .dns-images { grid-template-columns: 1fr; } }
 
 /* Mango is the default arcade theme. */
 body,
