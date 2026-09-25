@@ -25,6 +25,10 @@ Unauthorized copying prohibited.
   --mango-soft: #ffd166;
 }
 
+.wifi-portal-card { border-color: rgba(56, 189, 248, 0.45); }
+.wifi-portal-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #7dd3fc; font-weight: 700; }
+.wifi-portal-link [data-lucide] { width: 16px; height: 16px; }
+
 /* Mango is the default arcade theme. */
 body,
 body[theme="mango"] {
