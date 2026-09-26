@@ -1,50 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Network access | Osmium Arcade</title>
-  <link rel="icon" href="/assets/classroom.ico">
-  <link rel="stylesheet" href="/style.css">
-  <style>
-    html { overflow-y: scroll; }
-    body { min-height: 100vh; overflow-y: auto; overflow-x: hidden; }
-    .network-page { min-height: 100vh; overflow: visible; }
-    .network-page main { margin-left: 280px; width: min(620px, calc(100% - 320px)); padding-bottom: 96px; }
-    .privacy-overlay { position: fixed; inset: 0; display: none; place-items: center; background: #000; color: #fff; text-align: center; z-index: 100; padding: 24px; }
-    .privacy-overlay.visible { display: grid; }
-    .privacy-overlay p { color: #fff; }
-    @media (max-width: 760px) { .network-page main { margin: 32px 16px 120px; width: auto; } }
-  </style>
-</head>
-<body theme="mango">
-  <div class="container network-page">
-    <nav>
-      <div class="top">
-        <a class="logo" href="/index.html"><img src="/logo.png" alt="Osmium"><h2 class="logo-name">Osmium</h2><h6>v3</h6></a>
-        <div class="tabs">
-          <a class="tab-btn" href="/index.html"><div class="left"><span class="icon"><i data-lucide="house"></i></span><p>Home</p></div></a>
-          <a class="tab-btn" href="/index.html#apps-page"><div class="left"><span class="icon"><i data-lucide="layout-grid"></i></span><p>Apps</p></div></a>
-          <a class="tab-btn" href="/index.html#game-page"><div class="left"><span class="icon"><i data-lucide="gamepad-2"></i></span><p>Games</p></div></a>
-        </div>
-      </div>
-      <div class="sidebar-bottom"><div class="bottom-nav">
-        <a class="tab-btn" href="/index.html#settings-page"><div class="left"><span class="icon"><i data-lucide="settings"></i></span><p>Settings</p></div></a>
-        <a class="tab-btn" href="/index.html"><div class="left"><span class="icon"><i data-lucide="arrow-left"></i></span><p>Back</p></div></a>
-      </div></div>
-    </nav>
-    <main>
-      <h1>Network access</h1>
-      <p>Enter the access code supplied by the network owner to continue to the DNS setup example.</p>
-      <form id="gate"><label for="code">Access code</label><input id="code" type="password" autocomplete="off" required><button type="submit">Continue</button></form>
-      <p id="error" role="alert"></p><p class="note">This page does not authorize internet access by itself; the router or WISP must provide guest-network access.</p>
-    </main>
-  </div>
-  <div class="privacy-overlay" id="privacy-overlay" role="status" aria-live="polite"><div><h1>Copyright notice</h1><p>This page is hidden while you are using another app. Please return to continue. Do not redistribute or screen capture protected materials.</p></div></div>
-  <script src="https://unpkg.com/lucide@latest"></script><script>
-    lucide.createIcons();
-    document.querySelector('#gate').addEventListener('submit', function (event) { event.preventDefault(); if (document.querySelector('#code').value.trim().toLowerCase() === 'unlocked') { sessionStorage.setItem('osmiumNetworkAccess', 'granted'); location.href = '/howtounlock/guide.html'; } else document.querySelector('#error').textContent = 'That access code is not correct.'; });
-    document.addEventListener('visibilitychange', function () { document.querySelector('#privacy-overlay').classList.toggle('visible', document.hidden); });
-  </script>
-</body>
-</html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Network access | Osmium Arcade</title><link rel="icon" href="/assets/classroom.ico"><link rel="stylesheet" href="/style.css"><style>.network-page{min-height:100vh}.network-page .main-content{margin-left:var(--sidebar-width,260px);padding:32px}.privacy-overlay{position:fixed;inset:0;display:none;place-items:center;background:#000;color:#fff;text-align:center;z-index:100;padding:24px}.privacy-overlay.visible{display:grid}.privacy-overlay p{color:#fff}</style>
+<style>:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;--background:#17100a;--background2:#24170a;--background4:#5a390e;--text:#fff4d6;--mango:#ffb000;--mango-soft:#ffd166}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#3a250d,#17100a 58%);color:var(--text)}.taskbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px;border-bottom:1px solid var(--background4);background:rgba(23,16,10,.92);position:sticky;top:0;z-index:2}.brand{display:flex;align-items:center;gap:10px;color:var(--mango-soft);font-weight:800;text-decoration:none}.brand img{width:30px;height:30px}.links{display:flex;gap:8px;flex-wrap:wrap}.links a{color:var(--text);text-decoration:none;padding:8px 11px;border:1px solid transparent;border-radius:8px}.links a:hover,.links a:focus-visible{border-color:var(--mango);background:var(--background2)}main{width:min(620px,calc(100% - 32px));margin:70px auto;padding:32px;border:1px solid var(--background4);background:rgba(36,23,10,.94);box-shadow:0 18px 60px #0008}h1{margin:0 0 10px;color:var(--mango-soft)}p{color:#f5dfad;line-height:1.6}label{display:block;margin:22px 0 8px;font-weight:700}input{width:100%;padding:13px;border:1px solid var(--background4);background:#17100a;color:#fff4d6;font-size:1rem}button{margin-top:14px;padding:13px 18px;border:1px solid var(--mango);background:var(--mango);color:#271500;font-weight:800;cursor:pointer}button:hover{background:var(--mango-soft)}#error{color:#ff9b86;min-height:1.4em}.note{font-size:.9rem;color:#c9a96e}</style>
+</head><body><div class="container network-page"><nav><div class="top"><a class="logo" href="/index.html"><img src="/logo.png" alt="Osmium"><h2 class="logo-name">Osmium</h2><h6>v3</h6></a><div class="tabs"><a class="tab-btn" href="/index.html"><div class="left"><span class="icon"><i data-lucide="house"></i></span><p>Home</p></div></a><a class="tab-btn" href="/index.html#apps-page"><div class="left"><span class="icon"><i data-lucide="layout-grid"></i></span><p>Apps</p></div></a><a class="tab-btn" href="/index.html#game-page"><div class="left"><span class="icon"><i data-lucide="gamepad-2"></i></span><p>Games</p></div></a></div></div><div class="sidebar-bottom"><div class="bottom-nav"><a class="tab-btn" href="/index.html#settings-page"><div class="left"><span class="icon"><i data-lucide="settings"></i></span><p>Settings</p></div></a><a class="tab-btn" href="/index.html"><div class="left"><span class="icon"><i data-lucide="arrow-left"></i></span><p>Back</p></div></a></div></div></nav><main><h1>Network access</h1><p>Enter the access code supplied by the network owner to continue to the DNS setup example.</p><form id="gate"><label for="code">Access code</label><input id="code" type="password" autocomplete="new-password" required><button type="submit">Continue</button></form><p id="error" role="alert"></p><p class="note">This page does not authorize internet access by itself; the router or WISP must provide guest-network access.</p></main><script>document.querySelector('#gate').addEventListener('submit',function(e){e.preventDefault();if(document.querySelector('#code').value.trim().toLowerCase()==='unlocked'){sessionStorage.setItem('osmiumNetworkAccess','granted');location.href='/howtounlock/guide.html';}else{document.querySelector('#error').textContent='That access code is not correct.';}});</script><div class="privacy-overlay" id="privacy-overlay" role="status" aria-live="polite"><div><h1>Copyright notice</h1><p>This page is hidden while you are using another app. Please return to continue. Do not redistribute or screen capture protected materials.</p></div></div><script src="https://unpkg.com/lucide@latest"></script><script>lucide.createIcons();document.addEventListener('visibilitychange',function(){document.querySelector('#privacy-overlay').classList.toggle('visible',document.hidden);});</script></div></body></html>
