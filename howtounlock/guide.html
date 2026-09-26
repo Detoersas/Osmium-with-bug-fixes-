@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DNS setup example | Osmium Arcade</title><link rel="icon" href="/assets/classroom.ico"><link rel="stylesheet" href="/style.css">
   <style>
-    .network-page { min-height: 100vh; }
-    .network-page main { margin-left: 280px; width: min(1080px, calc(100% - 320px)); }
+    html { overflow-y: scroll; }
+    body { min-height: 100vh; overflow-y: auto; overflow-x: hidden; }
+    .network-page { min-height: 100vh; overflow: visible; }
+    .network-page main { margin-left: 280px; width: min(1080px, calc(100% - 320px)); padding-bottom: 96px; }
     .privacy-overlay { position: fixed; inset: 0; display: none; place-items: center; background: #000; color: #fff; text-align: center; z-index: 100; padding: 24px; }
     .privacy-overlay.visible { display: grid; }
     .privacy-overlay p { color: #fff; }
