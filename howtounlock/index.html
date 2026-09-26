@@ -3,25 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Network access</title>
+  <title>Network access | Osmium Arcade</title>
+  <link rel="icon" href="/assets/classroom.ico">
   <style>
-    :root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#111827;color:#f8fafc}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#1e3a5f,#111827 55%)}main{width:min(620px,100%);padding:32px;border:1px solid #334155;border-radius:20px;background:#172033;box-shadow:0 20px 60px #0005}h1{margin-top:0}p{color:#cbd5e1;line-height:1.6}label{display:block;margin:22px 0 8px;font-weight:700}input{width:100%;padding:13px;border:1px solid #475569;border-radius:10px;background:#0f172a;color:#fff;font-size:1rem}button{margin-top:14px;padding:13px 18px;border:0;border-radius:10px;background:#38bdf8;color:#082f49;font-weight:800;cursor:pointer}#error{color:#fda4af;min-height:1.4em}.note{font-size:.9rem;color:#94a3b8}
+    :root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;--background:#17100a;--background2:#24170a;--background3:#3a250d;--background4:#5a390e;--text:#fff4d6;--mango:#ffb000;--mango-soft:#ffd166}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#3a250d,#17100a 58%);color:var(--text)}.taskbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px;border-bottom:1px solid var(--background4);background:rgba(23,16,10,.92);position:sticky;top:0;z-index:2}.brand{display:flex;align-items:center;gap:10px;color:var(--mango-soft);font-weight:800;text-decoration:none}.brand img{width:30px;height:30px}.links{display:flex;gap:8px;flex-wrap:wrap}.links a{color:var(--text);text-decoration:none;padding:8px 11px;border:1px solid transparent;border-radius:8px}.links a:hover,.links a:focus-visible{border-color:var(--mango);background:var(--background2)}main{width:min(620px,calc(100% - 32px));margin:70px auto;padding:32px;border:1px solid var(--background4);background:rgba(36,23,10,.94);box-shadow:0 18px 60px #0008}h1{margin:0 0 10px;color:var(--mango-soft)}p{color:#f5dfad;line-height:1.6}label{display:block;margin:22px 0 8px;font-weight:700}input{width:100%;padding:13px;border:1px solid var(--background4);background:#17100a;color:#fff4d6;font-size:1rem}button{margin-top:14px;padding:13px 18px;border:1px solid var(--mango);background:var(--mango);color:#271500;font-weight:800;cursor:pointer}button:hover{background:var(--mango-soft)}#error{color:#ff9b86;min-height:1.4em}.note{font-size:.9rem;color:#c9a96e}
   </style>
 </head>
 <body>
-<main>
-  <h1>Network access</h1>
-  <p>Enter the access code supplied by the network owner to continue to the DNS setup page.</p>
-  <form id="gate">
-    <label for="code">Access code</label>
-    <input id="code" type="password" autocomplete="off" required>
-    <button type="submit">Continue</button>
-  </form>
-  <p id="error" role="alert"></p>
-  <p class="note">This page does not authorize internet access by itself; the router or WISP must provide the guest-network access.</p>
-</main>
-<script>
-document.querySelector('#gate').addEventListener('submit', function(event){event.preventDefault();var value=document.querySelector('#code').value.trim().toLowerCase();if(value==='unlocked'){location.href='/howtounlock/guide.html';}else{document.querySelector('#error').textContent='That access code is not correct.';}});
-</script>
+  <header class="taskbar"><a class="brand" href="/index.html"><img src="/logo.png" alt="Osmium">Osmium <span>v3</span></a><nav class="links" aria-label="Site navigation"><a href="/index.html">Home</a><a href="/index.html#apps-page">Apps</a><a href="/index.html#game-page">Games</a><a href="/index.html#settings-page">Settings</a></nav></header>
+  <main><h1>Network access</h1><p>Enter the access code supplied by the network owner to continue to the DNS setup example.</p><form id="gate"><label for="code">Access code</label><input id="code" type="password" autocomplete="off" required><button type="submit">Continue</button></form><p id="error" role="alert"></p><p class="note">This page does not authorize internet access by itself; the router or WISP must provide guest-network access.</p></main>
+  <script>document.querySelector('#gate').addEventListener('submit',function(e){e.preventDefault();if(document.querySelector('#code').value.trim().toLowerCase()==='unlocked'){location.href='/howtounlock/guide.html';}else{document.querySelector('#error').textContent='That access code is not correct.';}});</script>
 </body>
 </html>
