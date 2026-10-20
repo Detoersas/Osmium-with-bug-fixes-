@@ -73,6 +73,49 @@
 </head>
 <body>
   <canvas id="particles-js"></canvas>
+
+  <div class="dead-signal-launch" id="dead-signal-launch" role="dialog" aria-modal="true" aria-labelledby="dead-signal-launch-title">
+    <button class="dead-signal-launch-close" id="dead-signal-launch-close" type="button" aria-label="Close Dead Signal trailer">×</button>
+    <div class="dead-signal-launch-media">
+      <video id="dead-signal-video" autoplay muted loop playsinline poster="/assets/dead-signal-scene.jpg">
+        <source src="/assets/dead-signal-trailer.mp4" type="video/mp4">
+      </video>
+      <div class="dead-signal-launch-vignette"></div>
+    </div>
+    <div class="dead-signal-launch-copy">
+      <p class="dead-signal-eyebrow">Roblox horror experience</p>
+      <h1 id="dead-signal-launch-title">Dead Signal</h1>
+      <p>Something is broadcasting from the dark. Tune in, stay alive, and uncover what should have stayed buried.</p>
+      <p class="dead-signal-date">Releasing soon · 10/20–11/7</p>
+      <a class="dead-signal-cta" href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">Join the experience</a>
+    </div>
+  </div>
+
+  <aside class="dead-signal-ad dead-signal-ad-left" aria-label="Dead Signal release announcement">
+    <a href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">
+      <img src="/assets/dead-signal-logo.png" alt="Dead Signal">
+      <span><strong>Dead Signal</strong><small>Coming soon · 10/20–11/7</small></span>
+    </a>
+  </aside>
+  <aside class="dead-signal-ad dead-signal-ad-right" aria-label="Dead Signal game advertisement">
+    <a href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">
+      <img src="/assets/dead-signal-scene.jpg" alt="Dark Dead Signal game scene">
+      <span><strong>Can you hear it?</strong><small>Play on Roblox</small></span>
+    </a>
+  </aside>
+
+  <div class="dead-signal-release-bar"><span class="dead-signal-pulse"></span> Dead Signal release coming soon <b>10/20–11/7</b><a href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">View on Roblox →</a></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var launch = document.getElementById('dead-signal-launch');
+      var close = document.getElementById('dead-signal-launch-close');
+      var video = document.getElementById('dead-signal-video');
+      if (close && launch) close.addEventListener('click', function () { launch.remove(); });
+      if (video) video.play().catch(function () { /* autoplay may require user interaction */ });
+    });
+  </script>
+
   <div class="container" id="container">
     <nav>
       <div class="top">

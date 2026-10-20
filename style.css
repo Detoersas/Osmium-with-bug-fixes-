@@ -4,6 +4,53 @@ All rights reserved.
 Unauthorized copying prohibited.
 */
 /* ts code so beautiful */
+
+/* Dead Signal launch campaign */
+.dead-signal-launch {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  max-width: 900px;
+  min-height: 510px;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 40, 40, 0.55);
+  background: #080606;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.82), 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 45px rgba(210, 0, 0, 0.18);
+  animation: dead-signal-enter 0.45s ease-out both;
+}
+.dead-signal-launch-media { position: relative; min-height: 280px; background: #000; }
+.dead-signal-launch-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dead-signal-launch-vignette { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 45%, #080606 100%), linear-gradient(0deg, rgba(0,0,0,.6), transparent 35%); pointer-events: none; }
+.dead-signal-launch-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); background: radial-gradient(circle at 100% 0%, rgba(130,0,0,.22), transparent 48%), #080606; }
+.dead-signal-eyebrow { color: #ef2d2d; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.dead-signal-launch h1 { margin: 10px 0 14px; color: #f8f5f0; font-family: Georgia, serif; font-size: clamp(42px, 6vw, 72px); line-height: .9; text-transform: uppercase; text-shadow: 3px 3px 0 #9f1111; }
+.dead-signal-launch-copy > p:not(.dead-signal-eyebrow):not(.dead-signal-date) { color: #c5baba; line-height: 1.6; font-size: 14px; }
+.dead-signal-date { margin: 20px 0; color: #ef4444; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.dead-signal-cta { width: fit-content; padding: 12px 17px; border: 1px solid #ef2d2d; color: #fff; background: #991b1b; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.dead-signal-cta:hover { background: #dc2626; }
+.dead-signal-launch-close { position: absolute; top: 12px; right: 14px; z-index: 2; width: 32px; height: 32px; padding: 0 !important; border: 1px solid rgba(255,255,255,.3) !important; border-radius: 50% !important; color: #fff; background: rgba(0,0,0,.5) !important; font-size: 24px; line-height: 1; cursor: pointer; }
+.dead-signal-ad { position: fixed; z-index: 12; width: 142px; border: 1px solid rgba(239,68,68,.45); background: #090707; box-shadow: 0 8px 25px rgba(0,0,0,.35); }
+.dead-signal-ad a { display: block; color: #f5eeee; }
+.dead-signal-ad img { display: block; width: 100%; height: 88px; object-fit: cover; opacity: .82; }
+.dead-signal-ad span { display: block; padding: 9px 10px 10px; }
+.dead-signal-ad strong, .dead-signal-ad small { display: block; }
+.dead-signal-ad strong { color: #f04444; font-size: 12px; }
+.dead-signal-ad small { margin-top: 4px; color: #b7a5a5; font-size: 10px; line-height: 1.3; }
+.dead-signal-ad-left { left: 84px; top: 22%; }
+.dead-signal-ad-right { right: 84px; bottom: 18%; }
+.dead-signal-ad:hover { border-color: #ef4444; transform: translateY(-3px); }
+.dead-signal-release-bar { position: fixed; left: 50%; bottom: 14px; z-index: 13; display: flex; align-items: center; gap: 9px; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(239,68,68,.28); background: rgba(20,8,8,.9); color: #d8caca; font-size: 11px; white-space: nowrap; }
+.dead-signal-release-bar b { color: #ef4444; }
+.dead-signal-release-bar a { color: #fca5a5; font-weight: 700; }
+.dead-signal-pulse { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.15); animation: dead-signal-pulse 1.6s infinite; }
+@keyframes dead-signal-enter { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
+@keyframes dead-signal-pulse { 50% { opacity: .35; } }
+@media (max-width: 1100px) { .dead-signal-ad-left { left: 12px; } .dead-signal-ad-right { right: 12px; } }
+@media (max-width: 700px) { .dead-signal-launch { grid-template-columns: 1fr; width: calc(100% - 28px); min-height: auto; } .dead-signal-launch-media { height: 230px; } .dead-signal-launch-copy { padding: 25px; } .dead-signal-ad { display: none; } .dead-signal-release-bar { max-width: calc(100% - 24px); overflow: hidden; } .dead-signal-release-bar a { display: none; } }
+
 :root {
   --background: #0a0a0a;
   --background2: #0f0f0f;
