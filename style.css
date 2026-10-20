@@ -23,6 +23,9 @@ Unauthorized copying prohibited.
 }
 .dead-signal-launch-media { position: relative; min-height: 280px; background: #000; }
 .dead-signal-launch-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dead-signal-fullscreen { position: absolute; right: 14px; bottom: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px !important; border: 1px solid rgba(255,255,255,.35) !important; border-radius: 6px !important; color: #fff; background: rgba(0,0,0,.7) !important; font-size: 11px; font-weight: 700; cursor: pointer; }
+.dead-signal-fullscreen:hover { border-color: #ef4444 !important; background: rgba(100,0,0,.8) !important; }
+.dead-signal-fullscreen svg { width: 14px; height: 14px; }
 .dead-signal-launch-vignette { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 45%, #080606 100%), linear-gradient(0deg, rgba(0,0,0,.6), transparent 35%); pointer-events: none; }
 .dead-signal-launch-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); background: radial-gradient(circle at 100% 0%, rgba(130,0,0,.22), transparent 48%), #080606; }
 .dead-signal-eyebrow { color: #ef2d2d; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
@@ -31,6 +34,11 @@ Unauthorized copying prohibited.
 .dead-signal-date { margin: 20px 0; color: #ef4444; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .dead-signal-cta { width: fit-content; padding: 12px 17px; border: 1px solid #ef2d2d; color: #fff; background: #991b1b; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .dead-signal-cta:hover { background: #dc2626; }
+.dead-signal-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.dead-signal-social { color: #c5baba; font-size: 11px; font-weight: 700; }
+.dead-signal-social:hover { color: #fff; text-decoration: underline; }
+.dead-signal-actions .dead-signal-social { color: #d8bcbc; }
+.dead-signal-actions .dead-signal-social:hover { color: #ef4444; }
 .dead-signal-launch-close { position: absolute; top: 12px; right: 14px; z-index: 2; width: 32px; height: 32px; padding: 0 !important; border: 1px solid rgba(255,255,255,.3) !important; border-radius: 50% !important; color: #fff; background: rgba(0,0,0,.5) !important; font-size: 24px; line-height: 1; cursor: pointer; }
 .dead-signal-ad { position: fixed; z-index: 12; width: 142px; border: 1px solid rgba(239,68,68,.45); background: #090707; box-shadow: 0 8px 25px rgba(0,0,0,.35); }
 .dead-signal-ad a { display: block; color: #f5eeee; }
@@ -62,6 +70,13 @@ body.dead-signal-game-open .dead-signal-ad { display: none; }
 .dead-signal-pulse { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.15); animation: dead-signal-pulse 1.6s infinite; }
 @keyframes dead-signal-enter { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
 @keyframes dead-signal-pulse { 50% { opacity: .35; } }
+
+/* Extend the Dead Signal campaign language across the site. */
+:root { --background: #080606; --background2: #100909; --background3: #1a0d0d; --background4: #3a1717; --blue: #ef4444; --text: #f3e8e8; --shadow: rgba(239, 68, 68, .18); --panel-radius: 6px; }
+body { background: radial-gradient(circle at 50% -20%, rgba(130, 0, 0, .2), transparent 42%), var(--background); color: var(--text); font-family: "Courier New", Courier, monospace; }
+h1, h2, h3, .logo, .dead-signal-launch h1 { font-family: Georgia, "Times New Roman", serif; letter-spacing: .02em; }
+button, a, input, select, textarea { font-family: inherit; }
+
 @media (max-width: 1100px) { .dead-signal-ad-left { left: 12px; } .dead-signal-ad-right { right: 12px; } }
 @media (max-width: 700px) { .dead-signal-launch { grid-template-columns: 1fr; width: calc(100% - 28px); min-height: auto; } .dead-signal-launch-media { height: 230px; } .dead-signal-launch-copy { padding: 25px; } .dead-signal-ad { display: none; } .dead-signal-release-bar { max-width: calc(100% - 24px); overflow: hidden; } .dead-signal-release-bar a { display: none; } }
 
