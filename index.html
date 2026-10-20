@@ -80,14 +80,15 @@
       <video id="dead-signal-video" autoplay muted loop playsinline poster="/assets/dead-signal-scene.jpg">
         <source src="/assets/dead-signal-trailer.mp4" type="video/mp4">
       </video>
-      <div class="dead-signal-launch-vignette"></div>
-    </div>
+<div class="dead-signal-launch-vignette"></div>
+  <button class="dead-signal-fullscreen" id="dead-signal-fullscreen" type="button" aria-label="Watch Dead Signal trailer fullscreen"><i data-lucide="maximize"></i><span>Full screen</span></button>
+  </div>
     <div class="dead-signal-launch-copy">
-      <p class="dead-signal-eyebrow">Roblox horror experience</p>
-      <h1 id="dead-signal-launch-title">Dead Signal</h1>
-      <p>Something is broadcasting from the dark. Tune in, stay alive, and uncover what should have stayed buried.</p>
-      <p class="dead-signal-date">Releasing soon · 10/20–11/7</p>
-      <a class="dead-signal-cta" href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">Join the experience</a>
+<p class="dead-signal-eyebrow">Axiom Games // Roblox playtest</p>
+  <h1 id="dead-signal-launch-title">Dead Signal</h1>
+  <p>A Russian roulette experience in early beta. This is only the beginning: more systems, scares, and features are on the way as the playtest grows.</p>
+  <p class="dead-signal-date">Playtest build · More to come</p>
+      <div class="dead-signal-actions"><a class="dead-signal-cta" href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">Join the playtest</a><a class="dead-signal-social" href="https://www.tiktok.com/@axiomgamesrbx?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">Follow Axiom Games on TikTok</a></div>
     </div>
   </div>
 
@@ -119,6 +120,11 @@
       var video = document.getElementById('dead-signal-video');
       if (close && launch) close.addEventListener('click', function () { launch.remove(); });
       if (video) video.play().catch(function () { /* autoplay may require user interaction */ });
+      var fullscreen = document.getElementById('dead-signal-fullscreen');
+      if (fullscreen && video) fullscreen.addEventListener('click', function () {
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+      });
       var announcement = document.getElementById('proxy-announcement');
       var announcementClose = document.getElementById('proxy-announcement-close');
       if (announcementClose && announcement) announcementClose.addEventListener('click', function () { announcement.remove(); });
