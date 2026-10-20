@@ -106,6 +106,12 @@
 
   <div class="dead-signal-release-bar"><span class="dead-signal-pulse"></span> Dead Signal release coming soon <b>10/20–11/7</b><a href="https://roblox.com/share/g/36091477" target="_blank" rel="noopener noreferrer">View on Roblox →</a></div>
 
+  <div class="proxy-announcement" id="proxy-announcement" role="status" aria-live="polite">
+    <button class="proxy-announcement-close" id="proxy-announcement-close" type="button" aria-label="Dismiss proxy announcement">×</button>
+    <span class="proxy-announcement-icon"><i data-lucide="radio-tower"></i></span>
+    <span><strong>Proxy Lab update</strong><small>Proxy tools are working again. Open Proxy Lab to browse the finder and current proxy.</small></span>
+  </div>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var launch = document.getElementById('dead-signal-launch');
@@ -113,6 +119,22 @@
       var video = document.getElementById('dead-signal-video');
       if (close && launch) close.addEventListener('click', function () { launch.remove(); });
       if (video) video.play().catch(function () { /* autoplay may require user interaction */ });
+      var announcement = document.getElementById('proxy-announcement');
+      var announcementClose = document.getElementById('proxy-announcement-close');
+      if (announcementClose && announcement) announcementClose.addEventListener('click', function () { announcement.remove(); });
+
+      // Side ads stay on-site: clicking or trying to dismiss one moves it to a safe position.
+      var adPositions = ['dead-signal-ad-left', 'dead-signal-ad-right', 'dead-signal-ad-top', 'dead-signal-ad-bottom'];
+      document.querySelectorAll('.dead-signal-ad').forEach(function (ad) {
+        ad.addEventListener('click', function (event) {
+          event.preventDefault();
+          var current = adPositions.findIndex(function (position) { return ad.classList.contains(position); });
+          ad.classList.remove.apply(ad.classList, adPositions);
+          ad.classList.add(adPositions[(current + 1) % adPositions.length]);
+          ad.classList.add('dead-signal-ad-moved');
+          setTimeout(function () { ad.classList.remove('dead-signal-ad-moved'); }, 450);
+        });
+      });
 
       // Keep the release bar visible, but remove the side image ads once visitors leave Home.
       document.addEventListener('click', function (event) {

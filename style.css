@@ -43,6 +43,19 @@ Unauthorized copying prohibited.
 .dead-signal-ad-right { right: 84px; bottom: 18%; }
 .dead-signal-ad:hover { border-color: #ef4444; transform: translateY(-3px); }
 body.dead-signal-game-open .dead-signal-ad { display: none; }
+.dead-signal-ad { cursor: pointer; transition: left .35s ease, right .35s ease, top .35s ease, bottom .35s ease, transform .35s ease, border-color .2s; }
+.dead-signal-ad-top { left: 50%; top: 88px; transform: translateX(-50%); }
+.dead-signal-ad-bottom { left: 50%; right: auto; bottom: 70px; transform: translateX(-50%); }
+.dead-signal-ad-moved { animation: dead-signal-ad-shift .45s ease; }
+@keyframes dead-signal-ad-shift { 50% { transform: scale(.92); opacity: .55; } }
+.proxy-announcement { position: fixed; top: 18px; left: 50%; z-index: 30; display: flex; align-items: center; gap: 12px; width: min(420px, calc(100% - 28px)); padding: 13px 38px 13px 14px; transform: translateX(-50%); border: 1px solid color-mix(in srgb, var(--blue) 55%, transparent); border-radius: 10px; background: color-mix(in srgb, var(--background2) 92%, var(--blue)); box-shadow: 0 12px 35px rgba(0,0,0,.35); animation: proxy-announcement-in .35s ease both; }
+.proxy-announcement-icon { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 9px; color: var(--blue); background: rgba(78,168,255,.12); }
+.proxy-announcement-icon svg { width: 18px; }
+.proxy-announcement strong, .proxy-announcement small { display: block; }
+.proxy-announcement strong { color: var(--blue); font-size: 12px; }
+.proxy-announcement small { margin-top: 3px; color: var(--text); font-size: 11px; line-height: 1.35; opacity: .8; }
+.proxy-announcement-close { position: absolute; top: 7px; right: 8px; padding: 4px 8px !important; border: 0 !important; color: var(--text); background: transparent !important; font-size: 19px; cursor: pointer; }
+@keyframes proxy-announcement-in { from { opacity: 0; transform: translate(-50%, -12px); } to { opacity: 1; transform: translate(-50%, 0); } }
 .dead-signal-release-bar { position: fixed; left: 50%; bottom: 14px; z-index: 13; display: flex; align-items: center; gap: 9px; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(239,68,68,.28); background: rgba(20,8,8,.9); color: #d8caca; font-size: 11px; white-space: nowrap; }
 .dead-signal-release-bar b { color: #ef4444; }
 .dead-signal-release-bar a { color: #fca5a5; font-weight: 700; }
