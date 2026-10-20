@@ -1180,6 +1180,34 @@ input {
   padding: 0;
 }
 
+.proxy-hub {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 72px) clamp(18px, 5vw, 56px);
+  border: 1px solid color-mix(in srgb, var(--blue) 45%, transparent);
+  border-radius: var(--panel-radius);
+  background: radial-gradient(circle at 50% 0%, rgba(78, 168, 255, .12), transparent 45%), var(--background2);
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0,0,0,.18);
+}
+.proxy-hub-brand { display: grid; place-items: center; width: 62px; height: 62px; margin: 0 auto 18px; border: 1px solid var(--blue); border-radius: 18px; color: var(--blue); background: rgba(78,168,255,.1); }
+.proxy-hub-brand svg { width: 32px; height: 32px; }
+.proxy-hub h1 { margin: 8px 0 12px; }
+.proxy-hub-intro { max-width: 570px; margin: 0 auto 28px; opacity: .8; line-height: 1.6; }
+.proxy-destination-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; text-align: left; }
+.proxy-destination { display: flex; align-items: flex-start; gap: 14px; min-height: 125px; padding: 18px; border: 1px solid var(--background4); border-radius: 12px; color: var(--text); background: var(--background3); transition: border-color .2s, transform .2s, background .2s; }
+.proxy-destination:hover { border-color: var(--blue); background: color-mix(in srgb, var(--blue) 8%, var(--background3)); transform: translateY(-2px); }
+.proxy-current { border-color: color-mix(in srgb, #69e09a 55%, var(--background4)); }
+.proxy-destination-icon { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border-radius: 10px; color: var(--blue); background: rgba(78,168,255,.12); }
+.proxy-current .proxy-destination-icon { color: #69e09a; background: rgba(105,224,154,.12); }
+.proxy-destination strong, .proxy-destination small, .proxy-destination em { display: block; }
+.proxy-destination strong { font-size: 16px; }
+.proxy-destination small { margin-top: 3px; color: var(--blue); font-size: 12px; font-weight: 700; }
+.proxy-current small { color: #69e09a; }
+.proxy-destination em { margin-top: 14px; opacity: .7; font-size: 12px; font-style: normal; }
+.proxy-hub-note { margin: 22px 0; opacity: .58; font-size: 11px; }
+@media (max-width: 620px) { .proxy-destination-grid { grid-template-columns: 1fr; } }
+
 #proxy-form-container {
   padding: 28px;
 }

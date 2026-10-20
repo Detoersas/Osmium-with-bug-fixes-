@@ -185,7 +185,7 @@
         const message = document.createElement('div');
         message.className = 'proxy-warning';
         message.setAttribute('role', 'alert');
-        message.innerHTML = '<strong>Proxy features are under construction.</strong><span>This content cannot be opened until proxy maintenance is complete.</span>';
+        message.innerHTML = '<strong>Proxy tools are being updated.</strong><span>Try the Proxy Finder or the current proxy destination below.</span>';
         document.body.appendChild(message);
         setTimeout(() => message.remove(), 4500);
       }
@@ -256,12 +256,22 @@
       </div>
 
       <div class="page" id="proxy-page">
-        <section class="construction-notice" role="status" aria-labelledby="proxy-notice-title">
-          <div class="construction-stripes" aria-hidden="true"></div>
-          <div class="construction-icon"><i data-lucide="construction"></i></div>
-          <p class="construction-kicker">Under construction</p>
-          <h1 id="proxy-notice-title">Proxy services are temporarily unavailable</h1>
-          <p>Proxy features are being rebuilt and cannot be opened right now. Please check back when maintenance is complete.</p>
+        <section class="proxy-hub" role="region" aria-labelledby="proxy-notice-title">
+          <div class="proxy-hub-brand" aria-hidden="true"><i data-lucide="radar"></i></div>
+          <p class="construction-kicker">Proxy Lab // online</p>
+          <h1 id="proxy-notice-title">Proxy tools are live</h1>
+          <p class="proxy-hub-intro">Find a route or launch the currently listed working proxy. External services open in a new tab.</p>
+          <div class="proxy-destination-grid">
+            <a class="proxy-destination proxy-finder" href="https://maxprotip.blogspot.com" target="_blank" rel="noopener noreferrer">
+              <span class="proxy-destination-icon"><i data-lucide="scan-search"></i></span>
+              <span><strong>MaxProTips</strong><small>Proxy finder</small><em>Browse available proxy options →</em></span>
+            </a>
+            <a class="proxy-destination proxy-current" href="https://space.geckobungalow.com/" target="_blank" rel="noopener noreferrer">
+              <span class="proxy-destination-icon"><i data-lucide="radio"></i></span>
+              <span><strong>Gecko Space</strong><small>Currently listed working proxy</small><em>Launch proxy →</em></span>
+            </a>
+          </div>
+          <p class="proxy-hub-note">Availability can change. Never enter sensitive information into an unfamiliar proxy.</p>
           <button class="category-btn" onclick="openPage('home-page')" type="button">Return Home</button>
         </section>
       </div>
