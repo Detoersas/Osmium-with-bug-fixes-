@@ -113,6 +113,14 @@
       var video = document.getElementById('dead-signal-video');
       if (close && launch) close.addEventListener('click', function () { launch.remove(); });
       if (video) video.play().catch(function () { /* autoplay may require user interaction */ });
+
+      // Keep the release bar visible, but remove the side image ads once visitors leave Home.
+      document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('[onclick*="openPage"]');
+        if (!trigger) return;
+        var action = trigger.getAttribute('onclick') || '';
+        document.body.classList.toggle('dead-signal-game-open', !action.includes("'home-page'"));
+      });
     });
   </script>
 

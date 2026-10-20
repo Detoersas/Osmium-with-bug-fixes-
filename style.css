@@ -42,6 +42,7 @@ Unauthorized copying prohibited.
 .dead-signal-ad-left { left: 84px; top: 22%; }
 .dead-signal-ad-right { right: 84px; bottom: 18%; }
 .dead-signal-ad:hover { border-color: #ef4444; transform: translateY(-3px); }
+body.dead-signal-game-open .dead-signal-ad { display: none; }
 .dead-signal-release-bar { position: fixed; left: 50%; bottom: 14px; z-index: 13; display: flex; align-items: center; gap: 9px; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(239,68,68,.28); background: rgba(20,8,8,.9); color: #d8caca; font-size: 11px; white-space: nowrap; }
 .dead-signal-release-bar b { color: #ef4444; }
 .dead-signal-release-bar a { color: #fca5a5; font-weight: 700; }
